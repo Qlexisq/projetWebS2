@@ -1,0 +1,34 @@
+:root{
+--light-blue:#74BBE4;
+--dark-blue:#4E86A7;
+--light-green:#C9E24D;
+--dark-green:#9CAF3B;
+--light-red:#F55D3E;
+--medium-red:#CE4D32;
+--dar-red:#C40031;
+
+--main-font:'Roboto', sans-serif;
+--title-font: 'Roboto Slab', serif;
+}
+
+body{
+	font-family:var(--main-font);
+}
+
+/*header*/
+.myNav{
+	height:100px;
+	background-color: var(--light-blue);
+	font-size:25px;
+	font-weight: bold;
+	padding-left:50px;
+	padding-right:50px;
+}
+
+.myNav a{
+		color:#FFFFFF;
+}
+
+.myNav img{
+	height:60px;
+}
