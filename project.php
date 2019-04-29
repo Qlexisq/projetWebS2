@@ -5,7 +5,7 @@
   require_once('./php/head.php');
   generate_head();
   ?>
-  <title>GOODIMAC - Accueil</title>
+  <title>GOODIMAC - *NOM DU PROJET*</title> <!-- dynamic -->
 </head>
 <body>
   <!-- Header : banner + menu -->
