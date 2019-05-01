@@ -18,6 +18,7 @@
 
 body{
 	font-family:var(--main-font);
+	color:var(--dark-grey);
 }
 
 /*header*/
@@ -80,6 +81,7 @@ body{
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0px 3px 8px rgba(0, 0, 0, .2);
+	margin-bottom: 50px;
 }
 
 
@@ -99,7 +101,6 @@ body{
 	margin-bottom: 10px;
 	font-weight: bold;
 	font-size: 20px;
-	color:var(--dark-grey);
 }
 
 .progress{ /*is a bootstrap style*/
@@ -120,7 +121,6 @@ body{
 }
 
 .thumbnailPercentage{
-	color:var(--dark-grey);
 	font-weight: bold;
 	font-size: 15px;
 }
@@ -215,7 +215,7 @@ body{
 	background-color: var(--light-blue);
 	border-top-left-radius: 23px;
 	border-bottom-right-radius: 23px;
-	margin-top:100px;
+	margin-top:50px;
 	margin-bottom: 100px;
 	position: relative;
 }
@@ -227,10 +227,371 @@ body{
 	padding: 6px;
 	position: absolute;
 	top: 25%;
-    right: -5%;
+	right: -5%;
 
 }
 
 .buttonArrow img{
 	height: 100%;
+}
+
+/* projects-gallery */
+.galleryProjects{
+	margin-left: 70px;
+	margin-right:70px;
+}
+/* profile */
+.profileProjects{
+	margin-left: 70px;
+	margin-right:70px;
+	margin-bottom: 50px;
+}
+
+.profileLegend{
+	color:var(--medium-grey);
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+/* about us */
+.aboutUs{
+	margin-left: 70px;
+	margin-right:70px;
+}
+
+.aboutUsImage{
+	width: 450px;
+}
+
+.aboutUsButtonArea{
+	margin-top: 50px;
+	margin-bottom: 100px;
+
+}
+
+/* project */
+.projectBg{
+	background-color: var(--light-grey);
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, .2);
+}
+
+.projectContent{
+	padding: 70px;
+}
+
+.projectImage{
+	/*padding: 10px*/
+}
+
+.projectTitle{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.projectDate{
+	font-size:15px;
+	color:var(--medium-grey);
+}
+.projectProgress{
+	margin-top: 25px;
+	height: 25px;
+}
+
+.projectPercentage{
+	font-weight: bold;
+}
+
+.projectDescription{
+	margin-top: 25px;
+	color:var(--medium-grey);
+}
+
+.projectButtonBox{
+	margin-top: 25px;
+	height: 10px;
+}
+
+.projectButton{
+	background-color: var(--light-red);
+	border-top-right-radius: 23px;
+	border-bottom-left-radius: 23px;
+	position: relative;
+	margin:0px;
+	font-size: 25px; 
+}
+
+.projectButtonHeart{
+	background-color: var(--dark-red);
+	height: 35px;
+	width: 35px;
+	padding: 7px;
+	position: absolute;
+	top: -25%;
+	right: -5%;
+}
+
+.projectButtonHeart img{
+	height: 100%
+}
+
+.suggestions{
+	margin-left: 70px;
+	margin-right:70px;
+	margin-bottom: 70px;
+}
+
+.suggestionsTitle{
+	color: var(--medium-grey);
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size:20px;
+}
+
+/* project creation */
+.creationContainer{
+	margin-left: 70px;
+	margin-right: 70px;
+}
+
+.stepSticker{
+	height: 40px;
+	width: 40px;
+	background-color: var(--dark-green);
+	color: white;
+	font-weight: bold;
+}
+
+.stepText{
+	color: var(--medium-grey);
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+label{
+	height: 200px;
+}
+
+[type=radio] { 
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+[type=radio] + img {
+	cursor: pointer;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+[type=radio]:checked + img {
+	outline: 2px solid var(--light-blue);
+}
+
+.MultiCarousel {
+	float: left; 
+	overflow: hidden;
+	width: 100%; 
+	position:relative; 
+	margin-bottom: 50px;
+}
+
+.MultiCarousel .MultiCarousel-inner { 
+	transition: 1s ease all; 
+	float: left; 
+}
+.MultiCarousel .MultiCarousel-inner .item { 
+	float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item > div { 
+	text-align: center; padding:10px; margin:10px; 
+	border-radius: 5px;
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, .2);
+	background:var(--light-grey); 
+}
+
+.MultiCarousel .leftLst, .MultiCarousel .rightLst { 
+	position:absolute; 
+	top:35%; 
+}
+
+.MultiCarousel .leftLst img, .MultiCarousel .rightLst img { 
+	height: 40px;
+}
+
+.MultiCarousel .leftLst { 
+	left:0; 
+}
+
+.MultiCarousel .rightLst { 
+	right:0; 
+}
+
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { 
+	pointer-events: none;
+}
+
+.btn:focus {
+	box-shadow: none;
+}
+
+.supportName{
+	font-weight: bold;
+}
+
+.uploadButton{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	margin-top:20px;
+	margin-bottom: 70px;
+	position: relative;
+	font-size: 20px;
+}
+
+.uploadSticker{
+	background-color: var(--medium-grey);
+	height: 32px;
+	width: 32px;
+	padding: 6px;
+	position: absolute;
+	top: -25%;
+	right: -7%;
+}
+
+.uploadSticker img{
+	height: 100%;
+}
+
+.inputProjectTitle{
+	color:var(--dark-grey);
+	border:1px solid var(--medium-grey);
+	border-radius: 15px;
+	width: 500px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+.inputProjectTitle:focus{
+	outline: none;
+}
+
+.inputProjectDescription{
+	color:var(--dark-grey);
+	border:1px solid var(--medium-grey);
+	border-radius: 15px;
+	width: 500px;
+	height:150px;
+	margin-top: 5px;
+	margin-bottom: 50px;
+	padding: 5px;
+}
+
+.inputProjectDescription:focus{
+	outline: none;
+}
+
+.projectSubmitButton{
+	background-color: var(--light-green);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	margin-top:20px;
+	margin-bottom: 70px;
+	position: relative;
+	font-size: 20px;
+}
+
+/* login */
+.loginTitle{
+	margin-left: 70px;
+}
+
+.loginContainer{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 70px;
+	margin-right: 70px;
+	margin-bottom: 70px;
+	background-color: var(--light-grey);
+}
+.topButtonArea{
+	margin-bottom: 20px;
+}
+
+.loginButtonLeft{
+	background-color: var(--medium-grey);
+	border-top-right-radius: 23px;
+	border-bottom-left-radius: 23px;
+	font-size: 20px;
+}
+
+.loginButtonRight{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	font-size: 20px;
+}
+
+.inputLogin{
+	color:var(--dark-grey);
+	border:1px solid var(--medium-grey);
+	border-radius: 15px;
+	width: 500px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+.inputLogin:focus{
+	outline: none;
+}
+
+.loginButton{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	margin-top:20px;
+	position: relative;
+	font-size: 20px;
+}
+
+/* register */
+.registerButtonLeft{
+	background-color: var(--dark-grey);
+	border-top-right-radius: 23px;
+	border-bottom-left-radius: 23px;
+	font-size: 20px;
+}
+
+.registerButtonRight{
+	background-color: var(--medium-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	font-size: 20px;
+}
+
+/* Modal */
+.myModal{
+	margin-top: 30vh;
+}
+
+.myModal .modal-content{
+	background-color: var(--light-grey);
+}
+
+.voteButtonLeft{
+	background-color: var(--light-blue);
+	border-top-right-radius: 23px;
+	border-bottom-left-radius: 23px;
+}
+
+.voteButtonRight{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
 }
