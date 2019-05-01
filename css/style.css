@@ -595,3 +595,98 @@ label{
 	border-top-left-radius: 23px;
 	border-bottom-right-radius: 23px;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+	/* index */
+	.indexBg{
+		padding-right: 10px;
+		padding-left:10px;
+	}
+
+	.indexTitle{
+		font-size: 20px;
+	}
+
+	.indexButtonLeft{
+		width: 70%;
+	}
+
+	.indexButtonRight{
+		margin-top: 10px;
+		width: 70%;
+	}
+
+	.indexProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.buttonArrow{
+		top: 58%
+	}
+
+	/* projects gallery */
+	.galleryProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	/* profile */
+	.profileProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	/* project creation */
+	.creationContainer {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.inputProjectTitle{
+		width:100%;
+	}
+
+	.inputProjectDescription{
+		width:100%;
+	}
+
+	/* about us */
+	.aboutUs {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	.aboutUsImage{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	/* register + login*/
+	.loginTitle {
+	    margin-left: 20px;
+	}
+	
+	.loginContainer{
+		margin-left: 20px;
+		margin-right:20px;
+		padding: 20px;
+	}
+
+	.inputLogin{
+		width: 100%;
+	}
+
+	.loginButtonLeft, .loginButtonRight, .registerButtonRight, .registerButtonLeft{
+		width: 60%;
+		font-size: 15px;
+	}
+
+	.loginButtonRight, .registerButtonRight{
+		margin-top: 10px;
+	}
+
+	.loginButton{
+		font-size: 15px;
+	}
+}
