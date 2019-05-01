@@ -15,7 +15,7 @@
   ?>
   <!-- container -->
   <div class="container-fluid myContainer">
-    <div class="title loginTitle">Connection</div>
+    <div class="title loginTitle">Inscription</div>
     <div class="loginContainer">
       <div class="text-center topButtonArea">
         <a href="./login.php"><button class="myButton registerButtonLeft">Déjà inscrit</button></a>
