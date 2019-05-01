@@ -5,7 +5,7 @@
           <div class=" projectThumbnail">
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test2.jpg"/>
+              <img class="thumbnailImage" src=""/>
             </div>
             <!-- change project title dinamically -->
             <div class="thumbnailTitle">Titre du projet</div>
@@ -22,7 +22,7 @@
               <a class="thumbnailLink" href="./project.php">
                 <button class="myButton thumbnailButton">Soutenir
                   <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
+                    <img src="./img/heart.png"/>
                   </div>
                 </button>
               </a>
