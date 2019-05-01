@@ -18,12 +18,20 @@
     <div class="aboutUs">
       <div class="title">À propos de nous</div>
       <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 text-justify">
           <div>
-            <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            <br><br>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <p>
+              Étudiants en première année d’école ingénieur IMAC, nous créons ce site dans le cadre de notre projet web.
+            </p>
+            <p>
+              Nous avons constaté au sein de notre école une volonté de vouloir créer des objets/souvenirs à l'effigie de l’école et de ses moments partagés. Ainsi nous avons voulu mettre en avant un système de kickstarter de goodies pour que des personnes se rapprochant de l’IMAC puissent créer leur souvenirs avec le soutien des camarades.
+            </p>
+            <p>
+              Ce système permet alors de tester un projet et de le lancer qu’au moment sa rentabilité et d’un engouement des IMAC.<br>
+              <span class="font-weight-bold">
+              Pour le moment, le site propose simplement de soutenir des projets. Le paiement et la création physique du projet n’est pas encore mis en place.
+              </span>
+            </p>
           </div>
         </div>
         <div class="col-12 col-md-6">
