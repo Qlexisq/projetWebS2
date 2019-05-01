@@ -13,12 +13,207 @@
   require_once('./php/menu.php');
   generate_header();
   ?>
+  <!-- Modal not logged -->
+  <div class="modal fade myModal" id="not-logged" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          Vous n'êtes pas connecté !
+          <br>Pour voter vous devez être inscrit et connecté sur le site.
+        </div>
+        <div class="text-center topButtonArea">
+          <a href="./login.php"><button class="myButton registerButtonLeft">Se connecter</button></a>
+          <a href="./register.php"><button class="myButton loginButtonRight">S'inscrire</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal vote success -->
+  <div class="modal fade myModal" id="vote-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          Votre vote a bien été pris en compte !
+          <br>Merci d'avoir soutenu ce projet.
+        </div>
+        <div class="text-center topButtonArea">
+          <a href="./projects-gallery.php"><button class="myButton voteButtonLeft">Voir d'autres projets</button></a>
+          <button class="myButton voteButtonRight" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal already votes -->
+  <div class="modal fade myModal" id="already-voted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          Désolé mais vous avez déjà voté pour ce projet.
+          <br>Ce vote ne sera donc pas pris en compte.
+        </div>
+        <div class="text-center topButtonArea">
+          <a href="./projects-gallery.php"><button class="myButton voteButtonLeft">Voir d'autres projets</button></a>
+          <button class="myButton voteButtonRight" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- container -->
-  <div class="container-fluid">
+  <div class="container-fluid myContainer">
+    <div class="projectBg">
+      <div class="projectContent">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="projectImage">
+              <img class="w-100" src="./img/test/test1.jpg"/>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <!-- change title dynamically -->
+            <div class="projectTitle">Titre du projet</div>
+            <!-- change date dynamically -->
+            <div class="projectDate"> Projet mis en ligne le 00/00/0000
+              <!-- change pseudo dynamically -->
+              <br>Par : Laulaudu07
+            </div>
+            <div class="progress projectProgress">
+              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- change percentage dynamically -->
+            <div class="text-right projectPercentage">Soutenu à 50%</div>
+            <!-- change description dynamically -->
+            <div class="projectDescription">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
 
-
-
-
+            <div class="text-right projectButtonBox">
+              <!-- change data-target dynamically -->
+              <button class="myButton projectButton" data-toggle="modal" data-target="#not-logged">Soutenir
+                <div class="buttonSticker projectButtonHeart d-flex justify-content-center align-items-center">
+                  <img src="./img/heart.png"/>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="suggestions">
+      <div class="text-center suggestionsTitle">VOUS AIMEREZ AUSSI</div>
+      <div class="row">
+        <!-- dynamic beginning, please delete this part when you call the thumbnails dynamically-->
+        <div class="col-md-3">
+          <div class=" projectThumbnail">
+            <div class="thumbnailImageBox text-center">
+              <!-- change image file path dinamically -->
+              <img class="thumbnailImage" src="./img/test/test1.jpg"/>
+            </div>
+            <!-- change project title dinamically -->
+            <div class="thumbnailTitle">Titre du projet</div>
+            <div class="progress">
+              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- change percentage dynamically -->
+            <div class="thumbnailPercentage">Soutenu à 50%</div>
+            <!-- change description dynamically -->
+            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
+            <div class="text-center thumbnailButtonBox">
+              <a class="thumbnailLink" href="./project.php">
+                <button class="myButton thumbnailButton">Soutenir
+                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
+                    <img src="./img/heart.png"/>
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class=" projectThumbnail">
+            <div class="thumbnailImageBox text-center">
+              <!-- change image file path dinamically -->
+              <img class="thumbnailImage" src="./img/test/test2.jpg"/>
+            </div>
+            <!-- change project title dinamically -->
+            <div class="thumbnailTitle">Titre du projet</div>
+            <div class="progress">
+              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- change percentage dynamically -->
+            <div class="thumbnailPercentage">Soutenu à 50%</div>
+            <!-- change description dynamically -->
+            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
+            <div class="text-center thumbnailButtonBox">
+              <a class="thumbnailLink" href="./project.php">
+                <button class="myButton thumbnailButton">Soutenir
+                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
+                    <img class="" src="./img/heart.png">
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class=" projectThumbnail">
+            <div class="thumbnailImageBox text-center">
+              <!-- change image file path dinamically -->
+              <img class="thumbnailImage" src="./img/test/test3.jpg"/>
+            </div>
+            <!-- change project title dinamically -->
+            <div class="thumbnailTitle">Titre du projet</div>
+            <div class="progress">
+              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- change percentage dynamically -->
+            <div class="thumbnailPercentage">Soutenu à 50%</div>
+            <!-- change description dynamically -->
+            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
+            <div class="text-center thumbnailButtonBox">
+              <a class="thumbnailLink" href="./project.php">
+                <button class="myButton thumbnailButton">Soutenir
+                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
+                    <img class="" src="./img/heart.png">
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class=" projectThumbnail">
+            <div class="thumbnailImageBox text-center">
+              <!-- change image file path dinamically -->
+              <img class="thumbnailImage" src="./img/test/test4.jpg"/>
+            </div>
+            <!-- change project title dinamically -->
+            <div class="thumbnailTitle">Titre du projet</div>
+            <div class="progress">
+              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- change percentage dynamically -->
+            <div class="thumbnailPercentage">Soutenu à 50%</div>
+            <!-- change description dynamically -->
+            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
+            <div class="text-center thumbnailButtonBox">
+              <a class="thumbnailLink" href="./project.php">
+                <button class="myButton thumbnailButton">Soutenir
+                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
+                    <img class="" src="./img/heart.png">
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- dynamic end -->
+      </div>
+    </div>
     <!-- container end -->  
   </div>
   <!-- JavaScript for Bootstrap -->

@@ -14,11 +14,29 @@
   generate_header();
   ?>
   <!-- container -->
-  <div class="container-fluid">
-
-
-
-
+  <div class="container-fluid myContainer">
+    <div class="aboutUs">
+      <div class="title">À propos de nous</div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div>
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            <br><br>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="text-center">
+            <img class="aboutUsImage" src="./img/index-img.png"/>
+          </div>
+        </div>
+      </div>
+      <div class="aboutUsButtonArea text-center">
+        <a href="./projects-gallery.php"><button class="myButton indexButtonLeft">Découvrir les projets</button></a>
+        <a href="./project-creation.php"><button class="myButton indexButtonRight">Créer mon projet</button></a>
+      </div>
+    </div>
     <!-- container end -->  
   </div>
   <!-- JavaScript for Bootstrap -->
