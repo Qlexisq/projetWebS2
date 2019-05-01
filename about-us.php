@@ -26,11 +26,11 @@
             <p>
               Nous avons constaté au sein de notre école une volonté de vouloir créer des objets/souvenirs à l'effigie de l’école et de ses moments partagés. Ainsi nous avons voulu mettre en avant un système de kickstarter de goodies pour que des personnes se rapprochant de l’IMAC puissent créer leur souvenirs avec le soutien des camarades.
             </p>
-            <p>
+            <p class="indexText">
               Ce système permet alors de tester un projet et de le lancer qu’au moment sa rentabilité et d’un engouement des IMAC.<br>
-              <span class="font-weight-bold">
+              <b>
               Pour le moment, le site propose simplement de soutenir des projets. Le paiement et la création physique du projet n’est pas encore mis en place.
-              </span>
+              </b>
             </p>
           </div>
         </div>
