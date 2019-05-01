@@ -1,4 +1,3 @@
-
 <!doctype html>
 <head>
   <?php
@@ -43,7 +42,10 @@
       <div class="title">Les projets les plus soutenus</div>
       <div class="row">
         <!-- dynamic beginning, please delete this part when you call the thumbnails dynamically-->
+<<<<<<< HEAD
         <!-- the template is in thumbnail.php -->
+=======
+>>>>>>> master
         <div class="col-md-3">
           <div class=" projectThumbnail">
             <div class="thumbnailImageBox text-center">
