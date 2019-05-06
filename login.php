@@ -15,7 +15,7 @@
   ?>
   <!-- container -->
   <div class="container-fluid myContainer">
-    <div class="title loginTitle">Connection</div>
+    <div class="title loginTitle">Connexion</div>
     <div class="loginContainer">
       <div class="text-center topButtonArea">
         <button class="myButton loginButtonLeft">Déjà inscrit</button>
