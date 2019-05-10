@@ -15,6 +15,20 @@
   ?>
   <!-- container -->
   <div class="container-fluid myContainer">
+    <!-- Modal vote success -->
+    <div class="modal fade myModal" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            Voulez-vous vraiment supprimer ce projet ?
+          </div>
+          <div class="text-center topButtonArea">
+            <button class="myButton deleteButtonLeft">Oui</button></a>
+            <button class="myButton deleteButtonRight" data-dismiss="modal">Non</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="profileProjects">
       <!-- change pseudo dynamically -->
       <div class="title">Mon profil : LaulauDu77</div>
@@ -23,9 +37,10 @@
         <!-- dynamic begining -->
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <button class="buttonSticker crossSticker d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#delete">x</button>
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test1.jpg"/>
+              <a href=""><img class="thumbnailImage" src="./img/test/test1.jpg"/></a>
             </div>
             <!-- change project title dinamically -->
             <div class="thumbnailTitle">Titre du projet</div>
@@ -50,6 +65,7 @@
         </div>
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <div class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
               <img class="thumbnailImage" src="./img/test/test2.jpg"/>
@@ -77,6 +93,7 @@
         </div>
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <div class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>            
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
               <img class="thumbnailImage" src="./img/test/test3.jpg"/>
@@ -104,6 +121,7 @@
         </div>
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <div class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
               <img class="thumbnailImage" src="./img/test/test4.jpg"/>

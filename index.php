@@ -45,6 +45,7 @@
         <!-- the template is in thumbnail.php -->
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <div class="buttonSticker">x</div>
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
               <img class="thumbnailImage" src="./img/test/test1.jpg"/>
