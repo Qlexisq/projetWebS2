@@ -35,8 +35,20 @@ body{
 	color:white;
 }
 
-.myNav img{
+.myNav .logoNav{
 	height:60px;
+}
+
+.logoMobile{
+	height: 55px;
+}
+
+.menuIcon{
+	height: 100%;
+}
+
+.navbar-toggler{
+	font-size: 30px;
 }
 
 /* all pages */
@@ -627,6 +639,13 @@ label{
 
 /* Responsive */
 @media (max-width: 768px) {
+	/* menu */
+	.myNav{
+		padding-left: 20px;
+		padding-right: 20px;
+		height: auto;
+	}
+
 	/* index */
 	.indexBg{
 		padding-right: 10px;
