@@ -63,12 +63,13 @@
     <div class="projectBg">
       <div class="projectContent">
         <div class="row">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-4">
             <div class="projectImage">
               <img class="w-100" src="./img/test/test1.jpg"/>
+              <img class="w-100 mt-md-2" src="./img/test/test2.jpg"/>
             </div>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-8">
             <!-- change title dynamically -->
             <div class="projectTitle">Titre du projet</div>
             <!-- change date dynamically -->
