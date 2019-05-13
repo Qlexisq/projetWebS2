@@ -3,8 +3,8 @@ function generate_header(){
 	$html = <<<HTML
 	<img class="w-100 d-none d-md-block" src="./img/banner.png"/>
 
-	<nav class="nav navbar navbar-expand-md nav-justified justify-content-betweenq d-flex align-items-center myNav">
-	<a class="d-md-none" href="./index.php"><img class="logoMobile" src="./img/logo_noir_long.png"/></a>
+	<nav class="nav navbar navbar-expand-md nav-justified justify-content-between d-flex align-items-center myNav">
+	<a class="d-md-none logoMobile" href="./index.php"><img class="w-100" src="./img/logo_noir_long.png"/></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"><img class="menuIcon" src="./img/menu.png"/></span>
 	</button>
