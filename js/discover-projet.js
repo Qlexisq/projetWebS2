@@ -13,8 +13,8 @@ Document.prototype.ready = callback => {
   // construction des queries
 	let params = {};
 	params['project'] ="all";
-
-	let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+	//let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+	let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
 	url.search = new URLSearchParams(params);
 	console.log(url);
 
