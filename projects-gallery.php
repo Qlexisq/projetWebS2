@@ -20,7 +20,7 @@
       <div class="row" id="galleryProjects">
         <!-- dynamic beginning, please delete this part when you call the thumbnails dynamically-->
         <!-- the template is in thumbnail.php -->
-       
+          
        
         <!-- dynamic end -->
       </div>
