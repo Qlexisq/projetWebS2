@@ -5,25 +5,15 @@ include_once "../connect.php";
 
 require ( 'project.class.php' );
 
-$method = strtolower($_SERVER['REQUEST_METHOD']);
-
-if ($method !== 'get') {
-	http_response_code(405);
-	echo json_encode(array('message' => 'This method is not allowed.'));
-	exit();
-}
-
-session_start ();
+session_start();
 
 
-
-if (isset($_GET['project'])){
-	$item['project'] = $_GET['project'];
-	$_SESSION["project"] = $item['project']; 
+if (isset($_SESSION["project"])){
+	$item['project']=$_SESSION["project"];
 	http_response_code(200);
 }
 else {
-	http_response_code(404);
+	//http_response_code(404);
 	echo json_encode("No request provided");
 	exit();
 }
@@ -31,20 +21,21 @@ else {
 
 $projects = array();
 
-if(	$item['project']=="all"){
+if($item['project']!="all"){
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM Project
+	FROM Project WHERE id_project=:projectID;
 SQL
 	);
-	$stmt->execute();
+	$stmt->execute(['projectID'=>$item['project']]);
 	while (($row = $stmt->fetch()) !== false) {
 		array_push($projects, $row);
 	}
 	echo json_encode($projects);
 }
 else{
-	echo $_SESSION["project"] ;
+	http_response_code(404);
+	echo json_encode("No request provided");
 	exit();
 }
 

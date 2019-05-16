@@ -47,8 +47,8 @@ Document.prototype.ready = callback => {
 					            '<!-- change description dynamically -->',
 					            '<div class="thumbnailText">'+element.description_project+'</div>',
 					            '<div class="text-center thumbnailButtonBox">',
-					              '<a class="thumbnailLink" href="./project.php">',
-					                '<button class="myButton thumbnailButton">Soutenir',
+					            '<a class="thumbnailLink" href="./project.php">',
+					                '<button class="myButton thumbnailButton" id="'+element.id_project+'">Soutenir',
 					                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 					                    '<img src="./img/heart.png"/>',
 					                  '</div>',
@@ -59,6 +59,18 @@ Document.prototype.ready = callback => {
 					        '</div>',
 					].join("\n");
 					document.getElementById('galleryProjects').insertAdjacentHTML('beforeend',html);
+
+					document.getElementById(element.id_project).onclick = event => {
+						let params = {};
+						params['project'] =element.id_project;
+						//let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+						let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+						url.search = new URLSearchParams(params);
+						console.log(url);
+
+						// méthode GET
+						fetch(url);
+					};
 				});
 				console.log(data);
 			}
@@ -69,8 +81,3 @@ Document.prototype.ready = callback => {
 	// bloc catch appelé lorsqu'il y a une erreur
 
 })();
-
-
-
-	
-
