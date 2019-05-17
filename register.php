@@ -22,16 +22,16 @@
         <button class="myButton registerButtonRight">Nouveau</button>
       </div>
       <form class="d-flex align-items-center flex-column" id="form-register">
-        <div class="loginText" id="name-register" required>Nom</div>
-        <input class="inputLogin" type="text">        
-        <div class="loginText" id="firstname-register" required>Prénom</div>
-        <input class="inputLogin" type="text">        
-        <div class="loginText" id="pseudo-register" required>Pseudo</div>
-        <input class="inputLogin" type="text">
-        <div class="loginText" id="mail-register" required>Adresse mail</div>
-        <input class="inputLogin" type="text">
-        <div class="loginText" id="password-register" required>Mot de passe</div>
-        <input class="inputLogin" type="text">
+        <div class="loginText">Nom</div>
+        <input class="inputLogin" id="name-register" type="text" name="name" required>        
+        <div class="loginText" >Prénom</div>
+        <input class="inputLogin" type="text" id="firstname-register" name="firstname" required>        
+        <div class="loginText" >Pseudo</div>
+        <input class="inputLogin" type="text" id="pseudo-register" name="pseudo" required>
+        <div class="loginText" >Adresse mail</div>
+        <input class="inputLogin" type="text" id="mail-register" name="mail" required>
+        <div class="loginText" >Mot de passe</div>
+        <input class="inputLogin" type="text" id="password-register" name="password" required>
       </form>
       <div class="text-center">
         <button type="submit" class="myButton loginButton" id="button-register">S'inscrire

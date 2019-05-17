@@ -8,6 +8,8 @@ document.getElementById('button-register').onclick = event =>{
     if(form.pseudo.value) params['pseudo-register'] = form.pseudo.value;
     if(form.mail.value) params['mail-register'] = form.mail.value;
     if(form.password.value) params['password-register'] = form.password.value;
+    console.log(params);
+    
     
     let url = new URL("/projetWebS2/php/insert-register.php", "http://localhost");
     url.search = new URLSearchParams(params);
