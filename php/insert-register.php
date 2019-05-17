@@ -1,7 +1,10 @@
 <?php
 include_once "../connect.php";
-
 session_start();
+
+echo "<script>
+        console.log('je suis la')
+     </script>";
 
 if(isset($_GET['name-register']) && isset($_GET['firstname-register']) && isset($_GET['pseudo-register']) && isset($_GET['mail-register']) && isset($_GET['password-register']))
 {
@@ -13,11 +16,11 @@ if(isset($_GET['name-register']) && isset($_GET['firstname-register']) && isset(
     $mail = $_GET['mail-register'];
     $password = $_GET['password-register'];
     $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    INSERT INTO user (firstname, lastname, pseudo, mail, password)
-    VALUES('$firstname', '$lastname', '$pseudo', '$mail', '$password' );
+    INSERT INTO user (firstname, lastname, pseudo, mail, codeword)
+    VALUES(:firstname, :lastname, :pseudo, :mail, :codeword);
 SQL
 );
-    $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'pseudo' => $pseudo, 'mail' => $pseudo, 'password' => $password]);
+    $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'pseudo' => $pseudo, 'mail' => $pseudo, 'codeword' => $password]);
 }else 
 {
     http_response_code(404);

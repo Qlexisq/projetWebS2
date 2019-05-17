@@ -14,4 +14,10 @@ document.getElementById('button-register').onclick = event =>{
     let url = new URL("/projetWebS2/php/insert-register.php", "http://localhost");
     url.search = new URLSearchParams(params);
     console.log(url);
+
+    fetch(url, {method: 'POST'})
+        .then(response => {
+            console.log(response)
+            return response
+        })
 };
