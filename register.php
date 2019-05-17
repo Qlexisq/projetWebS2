@@ -21,23 +21,25 @@
         <a href="./login.php"><button class="myButton registerButtonLeft">Déjà inscrit</button></a>
         <button class="myButton registerButtonRight">Nouveau</button>
       </div>
-      <form class="d-flex align-items-center flex-column">
-        <div class="loginText">Nom</div>
+      <form class="d-flex align-items-center flex-column" id="form-register">
+        <div class="loginText" id="name-register" required>Nom</div>
         <input class="inputLogin" type="text">        
-        <div class="loginText">Prénom</div>
+        <div class="loginText" id="firstname-register" required>Prénom</div>
         <input class="inputLogin" type="text">        
-        <div class="loginText">Pseudo</div>
+        <div class="loginText" id="pseudo-register" required>Pseudo</div>
         <input class="inputLogin" type="text">
-        <div class="loginText">Adresse mail</div>
+        <div class="loginText" id="mail-register" required>Adresse mail</div>
         <input class="inputLogin" type="text">
-        <div class="loginText">Mot de passe</div>
+        <div class="loginText" id="password-register" required>Mot de passe</div>
         <input class="inputLogin" type="text">
       </form>
       <div class="text-center">
-        <button type="submit" class="myButton loginButton">S'inscrire
+        <button type="submit" class="myButton loginButton" id="button-register">S'inscrire
         </button>
+        <script src="js/form.js"></script>
       </div>
     </div>
+    
     <!-- container end -->  
   </div>
   <!-- JavaScript for Bootstrap -->
