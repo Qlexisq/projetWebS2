@@ -20,7 +20,7 @@ function showProject(){
 	let params = {};
 	params['project'] = "";
 	let url = new URL("php/read-project.php", "http://localhost/projetWebS2/");
-	//let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+	//let url = new URL("php/read-project.php", "https://imackickstarter.000webhostapp.com/");
 	url.search = new URLSearchParams(params);
 	console.log(url);
 

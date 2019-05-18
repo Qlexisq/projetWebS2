@@ -24,7 +24,7 @@ if (isset($_GET['project'])) {
  //   $item['page']     = $_GET['page'];
 
     $_SESSION["project"] = $item['project'];
-   
+     $order ='name_project ASC';
     if (isset($_GET['tri'])) {
         switch ($_GET['tri']) {
             case 'name-up':
@@ -52,6 +52,7 @@ if (isset($_GET['project'])) {
                 $item['tri'] = 'RAND()';
                 break;    
         }
+        $order = $item['tri'];
     }
     http_response_code(200);
 } else {
@@ -60,7 +61,7 @@ if (isset($_GET['project'])) {
     exit();
 }
 
-$order = $item['tri'];
+
 
 $projects = array();
 
@@ -78,6 +79,6 @@ SQL
     echo json_encode($projects);
 } else {
 	$_SESSION["projectOpen"] = $item['project'];
-    $_SESSION["projectOpen"];
+   
     exit();
 }
