@@ -16,7 +16,19 @@
   <!-- container -->
   <div class="container-fluid myContainer">
     <div class="galleryProjects" >
-      <div class="title">Les projets les plus *selon le tri*</div>
+      <div class="title" id="tri">Les projets les plus 
+          <form class="" id="form-tri">
+            <select name="tri">
+              <option value="name-up" selected="selected">Nom croissant</option>
+              <option value="name-down">Nom décroissant</option>
+              <option value="date-up">Date croissante</option>
+              <option value="date-down">Date décroissante</option>
+              <option value="pourcent-up">Les plus soutenu</option>
+              <option value="pourcent-down">Les moins soutenu</option>
+              <option value="type">Type</option>
+            </select>
+        </form>
+      </div>
       <div class="row" id="galleryProjects">
         <!-- dynamic beginning, please delete this part when you call the thumbnails dynamically-->
         <!-- the template is in thumbnail.php -->
