@@ -35,7 +35,7 @@ function showProject(){
 				document.getElementById('project').insertAdjacentHTML('beforeend', "Nothing found");
 			} else {
 				data.forEach(function(element) {
-
+					document.title = "GOODIMAC - " + element.name_project;
 					var html = [
 						'<div class="projectContent">',
 						'<div class="row">',
