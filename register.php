@@ -13,6 +13,35 @@
   require_once('./php/menu.php');
   generate_header();
   ?>
+
+  <?php
+  $nameErr = $firstnameErr = $pseudoErr = $mailErr = $passwordErr= "";
+  $name = $firstname = $pseudo = $mail = $password = "";
+
+  if(isset($_REQUEST["btn_submit"])){
+    if(empty($_POST["name"]))
+    {
+      $nameErr = "Name is required";
+    }
+    if(empty($_POST["firstname"]))
+    {
+      $firstname = "Firstname is required";
+    }
+    if(empty($_POST["pseudo"]))
+    {
+      $pseudo = "Pseudo is required";
+    }
+    if(empty($_POST["mail"]))
+    {
+      $mailErr = "Mail is required";
+    }
+    if(empty($_POST["password"]))
+    {
+      $password = "Password is required";
+    }
+  }
+  ?>
+  
   <!-- container -->
   <div class="container-fluid myContainer">
     <div class="title loginTitle">Inscription</div>
@@ -21,21 +50,25 @@
         <a href="./login.php"><button class="myButton registerButtonLeft">Déjà inscrit</button></a>
         <button class="myButton registerButtonRight">Nouveau</button>
       </div>
-      <form class="d-flex align-items-center flex-column" id="form-register">
+      <form class="d-flex align-items-center flex-column" id="form-register" method="POST" action="">
         <div class="loginText">Nom</div>
-        <input class="inputLogin" id="name-register" type="text" name="name" required>        
+        <input class="inputLogin" id="name-register" type="text" name="name" required>
+        <span class="error">* <?php echo $nameErr; ?></span>        
         <div class="loginText" >Prénom</div>
-        <input class="inputLogin" type="text" id="firstname-register" name="firstname" required>        
+        <input class="inputLogin" type="text" id="firstname-register" name="firstname" required>
+        <span class="error">* <?php echo $firstnameErr; ?></span>         
         <div class="loginText" >Pseudo</div>
         <input class="inputLogin" type="text" id="pseudo-register" name="pseudo" required>
+        <span class="error">* <?php echo $pseudoErr; ?></span> 
         <div class="loginText" >Adresse mail</div>
-        <input class="inputLogin" type="text" id="mail-register" name="mail" required>
+        <input class="inputLogin" type="email" id="mail-register" name="mail" required>
+        <span class="error">* <?php echo $mailErr; ?></span> 
         <div class="loginText" >Mot de passe</div>
-        <input class="inputLogin" type="text" id="password-register" name="password" required>
+        <input class="inputLogin" type="password" id="password-register" name="password" required>
+        <span class="error">* <?php echo $passwordErr; ?></span> 
       </form>
       <div class="text-center">
-        <button type="submit" class="myButton loginButton" id="button-register">S'inscrire
-        </button>
+      <input type="submit" class="myButton loginButton" id="button-register" name="btn_submit" value="S'inscrire">
         <script src="js/form.js"></script>
       </div>
     </div>

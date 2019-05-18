@@ -169,11 +169,16 @@
         <div class="stepText">IMPORTATION DU VISUEL</div>
       </div>
       <div class="text-center">
-        <button class="myButton uploadButton">Importer
+        <form methode="POST" action="" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_SIZE_FILE" value="1000000">
+        IMAGE : <input type="file" name="button_import">
+        <input class="myButton uploadButton" type="submit" name="envoyer" value="Importer">
+        
           <div class="buttonSticker uploadSticker d-flex justify-content-center align-items-center">
             <img src="./img/upload.png"/>
           </div>
-        </button>
+        
+        </form>
       </div>
       <div class="d-flex align-items-center flex-column">
         <div class="buttonSticker stepSticker d-flex justify-content-center align-items-center">3</div>
