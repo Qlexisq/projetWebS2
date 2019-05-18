@@ -24,7 +24,7 @@ if (isset($_GET['project'])) {
  //   $item['page']     = $_GET['page'];
 
     $_SESSION["project"] = $item['project'];
-    
+   
     if (isset($_GET['tri'])) {
         switch ($_GET['tri']) {
             case 'name-up':
@@ -77,6 +77,7 @@ SQL
     }
     echo json_encode($projects);
 } else {
-    echo $_SESSION["project"];
+	$_SESSION["projectOpen"] = $item['project'];
+    $_SESSION["projectOpen"];
     exit();
 }

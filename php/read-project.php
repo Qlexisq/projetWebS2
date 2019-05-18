@@ -8,8 +8,8 @@ require ( 'project.class.php' );
 session_start();
 
 
-if (isset($_SESSION["project"])){
-	$item['project']=$_SESSION["project"];
+if (isset($_SESSION["projectOpen"])){
+	$item['project']=$_SESSION["projectOpen"];
 	http_response_code(200);
 }
 else {
