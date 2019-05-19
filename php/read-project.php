@@ -31,6 +31,55 @@ SQL
 	while (($row = $stmt->fetch()) !== false) {
 		array_push($projects, $row);
 	}
+
+	foreach ($projects as $key => $project) {
+		$votes = array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT vote.pourcentage_vote
+			FROM project, state_project, vote
+			WHERE project.id_project= :projectID
+			AND vote.id_project=project.id_project;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($votes, $row['pourcentage_vote']);
+		}
+		$projects[$key]['vote'] = $votes;
+
+
+		//récupère user
+		$users=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT user.pseudo
+			FROM project, user
+			WHERE project.id_project= :projectID
+			AND project.id_user=user.id_user;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($users, $row['pseudo']);
+		}
+		$projects[$key]['user'] = $users;
+
+		//récupère template
+		$templates=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT link_template 
+			FROM project, template 
+			WHERE project.id_project = :projectID 
+			AND project.id_template = template.id_template;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($templates, $row['link_template']);
+		}
+		$projects[$key]['template'] = $templates;
+	}
+	
+
 	echo json_encode($projects);
 }
 else{

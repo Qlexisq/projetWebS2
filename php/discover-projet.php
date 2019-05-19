@@ -21,10 +21,9 @@ session_start();
 
 if (isset($_GET['project'])) {
     $item['project']     = $_GET['project'];
- //   $item['page']     = $_GET['page'];
-
     $_SESSION["project"] = $item['project'];
-     $order ='name_project ASC';
+	$order ='name_project ASC';
+
     if (isset($_GET['tri'])) {
         switch ($_GET['tri']) {
             case 'name-up':
@@ -55,14 +54,14 @@ if (isset($_GET['project'])) {
         $order = $item['tri'];
     }
     http_response_code(200);
-} else {
+}
+else {
     http_response_code(404);
     echo json_encode("No request provided");
     exit();
 }
 
-
-
+//SQL COMMAND
 $projects = array();
 
 if ($item['project'] == "all" ) {
@@ -76,6 +75,39 @@ SQL
     while (($row = $stmt->fetch()) !== false) {
         array_push($projects, $row);
     }
+
+	foreach ($projects as $key => $project) {
+		//récupère vote
+		$votes = array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT vote.pourcentage_vote
+			FROM project, state_project, vote
+			WHERE project.id_project= :projectID
+			AND vote.id_project=project.id_project;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($votes, $row['pourcentage_vote']);
+		}
+		$projects[$key]['vote'] = $votes;
+
+		//récupère user
+		$users=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT user.pseudo
+			FROM project, user
+			WHERE project.id_project= :projectID
+			AND project.id_user=user.id_user;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($users, $row['pseudo']);
+		}
+		$projects[$key]['user'] = $users;
+	}
+
     echo json_encode($projects);
 } else {
 	$_SESSION["projectOpen"] = $item['project'];

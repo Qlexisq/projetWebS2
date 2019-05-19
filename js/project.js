@@ -35,14 +35,16 @@ function showProject(){
 				document.getElementById('project').insertAdjacentHTML('beforeend', "Nothing found");
 			} else {
 				data.forEach(function(element) {
+					var vote = (element.vote.length*10)/5;
+
 					document.title = "GOODIMAC - " + element.name_project;
 					var html = [
 						'<div class="projectContent">',
 						'<div class="row">',
 						'<div class="col-12 col-md-4">',
 						'<div class="projectImage">',
-						'<img class="w-100" src="./img/test/test1.jpg"/>',
-						'<img class="w-100 mt-md-2" src="./img/test/test2.jpg"/>',
+						'<img class="w-100" src="./img/'+element.photo_project+'"/>',
+						'<img class="w-100 mt-md-2" src="./img/'+element.template+'"/>',
 						'</div>',
 						'</div>',
 						'<div class="col-12 col-md-8">',
@@ -51,14 +53,14 @@ function showProject(){
 						'<!-- change date dynamically -->',
 						'<div class="projectDate"> Projet mis en ligne le ' + element.date_project,
 						'<!-- change pseudo dynamically -->',
-						'<br>Par : Laulaudu07',
+						'<br>Par : '+element.user,
 						'</div>',
 						'<div class="progress projectProgress">',
 						'<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',
-						'<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>',
+					    '<div class="progress-bar" id="select-progress-bar-'+element.id_project+'" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
 						'</div>',
 						'<!-- change percentage dynamically -->',
-						'<div class="text-right projectPercentage">Soutenu à 50%</div>',
+						'<div class="thumbnailPercentage">Soutenu à '+vote+'%</div>',
 						'<!-- change description dynamically -->',
 						'<div class="projectDescription">' + element.description_project + '</div>',
 						'<div class="text-right projectButtonBox">',
@@ -74,6 +76,9 @@ function showProject(){
 						' </div>',
 					].join("\n");
 					document.getElementById('project').insertAdjacentHTML('beforeend', html);
+					var bar=document.getElementById('select-progress-bar-'+element.id_project);
+					bar.style.width = vote+'%';
+
 					youWillLove();
 				})
 			}
@@ -107,23 +112,23 @@ function youWillLove() {
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
-
+					var vote = (element.vote.length*10)/5;
 
 					var html = [
 						'<div class="col-md-3">',
 						'<div class=" projectThumbnail">',
 						'<div class="thumbnailImageBox text-center">',
 						'<!-- change image file path dinamically -->',
-						'<img class="thumbnailImage" src="./img/test/test1.jpg"/>',
+						 '<img class="thumbnailImage" src="./img/'+element.photo_project+'"/>',
 						'</div>',
 						'<!-- change project title dinamically -->',
 						'<div class="thumbnailTitle">' + element.name_project + '</div>',
 						'<div class="progress">',
 						'<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',
-						'<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>',
+					    '<div class="progress-bar" id="progress-bar-'+element.id_project+'" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
 						'</div>',
 						'<!-- change percentage dynamically -->',
-						'<div class="thumbnailPercentage">Soutenu à 50%</div>',
+						'<div class="thumbnailPercentage">Soutenu à '+vote+'%</div>',
 						'<!-- change description dynamically -->',
 						'<div class="thumbnailText">' + element.description_project + '</div>',
 						'<div class="text-center thumbnailButtonBox">',
@@ -140,6 +145,8 @@ function youWillLove() {
 					].join("\n");
 
 					document.getElementById('galleryProjects').insertAdjacentHTML('beforeend', html);
+					var bar=document.getElementById('progress-bar-'+element.id_project);
+					bar.style.width = vote+'%';
 
 					document.getElementById(element.id_project).onclick = event => {
 						let params = {};

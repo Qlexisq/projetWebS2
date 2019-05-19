@@ -269,6 +269,26 @@ body{
 	margin-left: 70px;
 	margin-right:70px;
 }
+
+.selectButton{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	font-size: 20px;
+}
+
+.selectGallery{
+	color: white;
+	border: none;
+	background: none;
+}
+.selectGallery option{
+	font-family: var(--main-font);
+	color: white;
+	border: none;
+	background:var(--dark-grey) ;
+}
+
 /* profile */
 .deleteButtonLeft{
 	background-color: var(--light-green);
