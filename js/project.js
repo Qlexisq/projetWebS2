@@ -44,7 +44,7 @@ function showProject(){
 						'<div class="col-12 col-md-4">',
 						'<div class="projectImage">',
 						'<img class="w-100" src="./img/'+element.photo_project+'"/>',
-						'<img class="w-100 mt-md-2" src="./img/test/test2.jpg"/>',
+						'<img class="w-100 mt-md-2" src="./img/'+element.template+'"/>',
 						'</div>',
 						'</div>',
 						'<div class="col-12 col-md-8">',

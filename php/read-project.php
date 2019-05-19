@@ -62,6 +62,21 @@ SQL
 			array_push($users, $row['pseudo']);
 		}
 		$projects[$key]['user'] = $users;
+
+		//récupère template
+		$templates=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT link_template 
+			FROM project, template 
+			WHERE project.id_project = :projectID 
+			AND project.id_template = template.id_template;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($templates, $row['link_template']);
+		}
+		$projects[$key]['template'] = $templates;
 	}
 	
 
