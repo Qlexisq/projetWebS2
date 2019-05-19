@@ -16,13 +16,30 @@ if(isset($_GET['name-register']) && isset($_GET['firstname-register']) && isset(
     $pseudo = htmlspecialchars($_GET['pseudo-register']);
     $mail = htmlspecialchars($_GET['mail-register']);
     $password = htmlspecialchars($_GET['password-register']);
-   // $verif = MyPDO::getInstance()->prepare(<<<SQL
-   // SELECT pseudo IF(STRCMP(pseudo, :pseudo) = 0, "YES", "NO") FROM user;
-//SQL
-//);
-  //  $verif->execute(['pseudo' => $pseudo]);
-    //$verifpseudo = $verif->fetch();
-    //if()
+    $verif = MyPDO::getInstance()->prepare(<<<SQL
+   SELECT mail, pseudo FROM user;
+SQL
+);
+    $verif->execute();
+    while (($row = $stmt->fetch()) !== false) {
+        array_push($projects, $row);
+    }
+    foreach($row as $value)
+    {
+        if($value == $mail)
+        {
+            http_response_code(404);
+            echo json_encode("erreur form register");
+            exit();
+        }
+        if($value == $pseudo)
+        {
+            http_response_code(404);
+            echo json_encode("erreur form register");
+            exit();
+        }
+    }
+
     $stmt = MyPDO::getInstance()->prepare(<<<SQL
     INSERT INTO user (firstname, lastname, pseudo, mail, password)
     VALUES(:firstname, :lastname, :pseudo, :mail, :password);

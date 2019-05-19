@@ -68,7 +68,10 @@
         <span class="error">* <?php echo $passwordErr; ?></span> 
       </form>
       <div class="text-center">
-      <input type="submit" class="myButton loginButton" id="button-register" name="btn_submit" value="S'inscrire">
+      <a href="./login.php">
+      <button type="submit" class="myButton loginButton" id="button-register" name="btn_submit" value="S'inscrire">S'inscrire
+      </button>
+      </a>
         <script src="js/form.js"></script>
       </div>
     </div>
