@@ -34,22 +34,23 @@ Document.prototype.ready = callback => {
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
+					var vote = element.vote.length*10;
 
 					var html = [
 					    '<div class="col-md-3">',
 					          '<div class=" projectThumbnail">',
 					           '<div class="thumbnailImageBox text-center">',
 					              '<!-- change image file path dinamically -->',
-					              '<img class="thumbnailImage" src="./img/test/test1.jpg"/>',
+					               '<img class="thumbnailImage" src="./img/'+element.photo_project+'"/>',
 					            '</div>',
 					            '<!-- change project title dinamically -->',
 					            '<div class="thumbnailTitle">'+element.name_project+'</div>',
 					            '<div class="progress">',
 					             '<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',
-					              '<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>',
+					              '<div class="progress-bar" id="progress-bar-'+element.id_project+'" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
 					            '</div>',
 					            '<!-- change percentage dynamically -->',
-					            '<div class="thumbnailPercentage">Soutenu à 50%</div>',
+					            '<div class="thumbnailPercentage">Soutenu à '+vote+'%</div>',
 					            '<!-- change description dynamically -->',
 					            '<div class="thumbnailText">'+element.description_project+'</div>',
 					            '<div class="text-center thumbnailButtonBox">',
@@ -64,7 +65,11 @@ Document.prototype.ready = callback => {
 					          '</div>',
 					        '</div>',
 					].join("\n");
+					
 					document.getElementById('galleryProjects').insertAdjacentHTML('beforeend',html);
+
+					var bar=document.getElementById('progress-bar-'+element.id_project);
+					bar.style.width = vote+'%';
 
 					document.getElementById(element.id_project).onclick = event => {
 						let params = {};
@@ -118,22 +123,23 @@ function selectChange(){
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
+					var vote = element.vote.length*10;
 
 					var html = [
 					    '<div class="col-md-3">',
 					          '<div class=" projectThumbnail">',
 					           '<div class="thumbnailImageBox text-center">',
 					              '<!-- change image file path dinamically -->',
-					              '<img class="thumbnailImage" src="./img/test/test1.jpg"/>',
+					              '<img class="thumbnailImage" src="./img/'+element.photo_project+'"/>',
 					            '</div>',
 					            '<!-- change project title dinamically -->',
 					            '<div class="thumbnailTitle">'+element.name_project+'</div>',
 					            '<div class="progress">',
 					             '<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',
-					              '<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>',
+					              '<div class="progress-bar" id="progress-bar-'+element.id_project+'" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
 					            '</div>',
 					            '<!-- change percentage dynamically -->',
-					            '<div class="thumbnailPercentage">Soutenu à 50%</div>',
+					            '<div class="thumbnailPercentage">Soutenu à '+vote+'%</div>',
 					            '<!-- change description dynamically -->',
 					            '<div class="thumbnailText">'+element.description_project+'</div>',
 					            '<div class="text-center thumbnailButtonBox">',
@@ -149,6 +155,9 @@ function selectChange(){
 					        '</div>',
 					].join("\n");
 					document.getElementById('galleryProjects').insertAdjacentHTML('beforeend',html);
+
+					var bar=document.getElementById('progress-bar-'+element.id_project);
+					bar.style.width = vote+'%';
 
 					document.getElementById(element.id_project).onclick = event => {
 						let params = {};

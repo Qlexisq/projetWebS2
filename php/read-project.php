@@ -31,6 +31,23 @@ SQL
 	while (($row = $stmt->fetch()) !== false) {
 		array_push($projects, $row);
 	}
+
+	foreach ($projects as $key => $project) {
+		$votes = array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT vote.pourcentage_vote
+			FROM project, state_project, vote
+			WHERE project.id_project= :projectID
+			AND vote.id_project=project.id_project;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($votes, $row['pourcentage_vote']);
+		}
+		$projects[$key]['vote'] = $votes;
+	}
+	
 	echo json_encode($projects);
 }
 else{
