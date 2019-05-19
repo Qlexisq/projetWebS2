@@ -18,7 +18,6 @@ if ($method !== 'get') {
 session_start();
 
 
-
 if (isset($_GET['project'])) {
     $item['project']     = $_GET['project'];
     $_SESSION["project"] = $item['project'];
@@ -39,10 +38,10 @@ if (isset($_GET['project'])) {
                 $item['tri'] = 'date_project DESC';
                 break;
             case 'pourcent-up':
-                $item['tri'] = 'id_project ASC';
+                $item['tri'] = 'Pourcent DESC, Project.name_project';
                 break;
             case 'pourcent-down':
-                $item['tri'] = 'id_project DESC';
+                $item['tri'] = 'Pourcent ASC, Project.name_project';
                 break;
             case 'type':
                 $item['tri'] = 'id_goodies ASC';
@@ -66,8 +65,12 @@ $projects = array();
 
 if ($item['project'] == "all" ) {
     $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    SELECT *
-    FROM Project ORDER BY $order;
+    SELECT  Project.id_project, Project.name_project,Project.photo_project,Project.description_project,Project.date_project,Project.id_user,Project.id_template,
+	Project.id_goodies,Project.id_state, IFNULL(SUM(Vote.pourcentage_vote), 0) as Pourcent 
+	FROM Project 
+	LEFT JOIN Vote ON Project.id_project = Vote.id_project 
+	GROUP BY Project.id_project, Project.name_project 
+	ORDER BY $order;
 SQL
     );
     
@@ -80,10 +83,10 @@ SQL
 		//récupère vote
 		$votes = array();
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT vote.pourcentage_vote
-			FROM project, state_project, vote
-			WHERE project.id_project= :projectID
-			AND vote.id_project=project.id_project;
+			SELECT Vote.pourcentage_vote
+			FROM Project, State_project, Vote
+			WHERE Project.id_project= :projectID
+			AND Vote.id_project=Project.id_project
 SQL
 		);
 		$stmt->execute(['projectID'=>$project['id_project']]);
@@ -91,21 +94,6 @@ SQL
 			array_push($votes, $row['pourcentage_vote']);
 		}
 		$projects[$key]['vote'] = $votes;
-
-		//récupère user
-		$users=array();
-		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT user.pseudo
-			FROM project, user
-			WHERE project.id_project= :projectID
-			AND project.id_user=user.id_user;
-SQL
-		);
-		$stmt->execute(['projectID'=>$project['id_project']]);
-		while (($row = $stmt->fetch()) !== false) {
-			array_push($users, $row['pseudo']);
-		}
-		$projects[$key]['user'] = $users;
 	}
 
     echo json_encode($projects);

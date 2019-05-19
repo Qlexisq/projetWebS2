@@ -35,10 +35,11 @@ SQL
 	foreach ($projects as $key => $project) {
 		$votes = array();
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT vote.pourcentage_vote
-			FROM project, state_project, vote
-			WHERE project.id_project= :projectID
-			AND vote.id_project=project.id_project;
+			SELECT Vote.pourcentage_vote
+			FROM Project, State_project, Vote
+			WHERE Project.id_project= :projectID
+			AND Vote.id_project=Project.id_project
+			AND Vote.pourcentage_vote=1;
 SQL
 		);
 		$stmt->execute(['projectID'=>$project['id_project']]);
@@ -51,10 +52,10 @@ SQL
 		//récupère user
 		$users=array();
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT user.pseudo
-			FROM project, user
-			WHERE project.id_project= :projectID
-			AND project.id_user=user.id_user;
+			SELECT User.pseudo
+			FROM Project, User
+			WHERE Project.id_project= :projectID
+			AND Project.id_user=User.id_user;
 SQL
 		);
 		$stmt->execute(['projectID'=>$project['id_project']]);
@@ -66,10 +67,10 @@ SQL
 		//récupère template
 		$templates=array();
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT link_template 
-			FROM project, template 
-			WHERE project.id_project = :projectID 
-			AND project.id_template = template.id_template;
+			SELECT Template.link_template 
+			FROM Project, Template 
+			WHERE Project.id_project = :projectID 
+			AND Project.id_template = Template.id_template;
 SQL
 		);
 		$stmt->execute(['projectID'=>$project['id_project']]);
