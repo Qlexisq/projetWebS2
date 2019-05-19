@@ -53,7 +53,7 @@ function showProject(){
 						'<!-- change date dynamically -->',
 						'<div class="projectDate"> Projet mis en ligne le ' + element.date_project,
 						'<!-- change pseudo dynamically -->',
-						'<br>Par : Laulaudu07',
+						'<br>Par : '+element.user,
 						'</div>',
 						'<div class="progress projectProgress">',
 						'<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',

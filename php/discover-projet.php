@@ -77,6 +77,7 @@ SQL
     }
 
 	foreach ($projects as $key => $project) {
+		//récupère vote
 		$votes = array();
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
 			SELECT vote.pourcentage_vote
@@ -90,6 +91,21 @@ SQL
 			array_push($votes, $row['pourcentage_vote']);
 		}
 		$projects[$key]['vote'] = $votes;
+
+		//récupère user
+		$users=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT user.pseudo
+			FROM project, user
+			WHERE project.id_project= :projectID
+			AND project.id_user=user.id_user;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($users, $row['pseudo']);
+		}
+		$projects[$key]['user'] = $users;
 	}
 
     echo json_encode($projects);
