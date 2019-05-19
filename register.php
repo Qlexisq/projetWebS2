@@ -53,19 +53,19 @@
       <form class="d-flex align-items-center flex-column" id="form-register" method="POST" action="">
         <div class="loginText">Nom</div>
         <input class="inputLogin" id="name-register" type="text" name="name" required>
-        <span class="error">* <?php echo $nameErr; ?></span>        
+        <span class="error"><?php echo $nameErr; ?></span>        
         <div class="loginText" >Prénom</div>
         <input class="inputLogin" type="text" id="firstname-register" name="firstname" required>
-        <span class="error">* <?php echo $firstnameErr; ?></span>         
+        <span class="error"><?php echo $firstnameErr; ?></span>         
         <div class="loginText" >Pseudo</div>
         <input class="inputLogin" type="text" id="pseudo-register" name="pseudo" required>
-        <span class="error">* <?php echo $pseudoErr; ?></span> 
+        <span class="error"><?php echo $pseudoErr; ?></span> 
         <div class="loginText" >Adresse mail</div>
         <input class="inputLogin" type="email" id="mail-register" name="mail" required>
-        <span class="error">* <?php echo $mailErr; ?></span> 
+        <span class="error"><?php echo $mailErr; ?></span> 
         <div class="loginText" >Mot de passe</div>
         <input class="inputLogin" type="password" id="password-register" name="password" required>
-        <span class="error">* <?php echo $passwordErr; ?></span> 
+        <span class="error"><?php echo $passwordErr; ?></span> 
       </form>
       <div class="text-center">
       <a href="./login.php">
