@@ -35,7 +35,7 @@ function showProject(){
 				document.getElementById('project').insertAdjacentHTML('beforeend', "Nothing found");
 			} else {
 				data.forEach(function(element) {
-					var vote = element.vote.length*10;
+					var vote = (element.vote.length*10)/5;
 
 					document.title = "GOODIMAC - " + element.name_project;
 					var html = [
@@ -112,7 +112,7 @@ function youWillLove() {
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
-					var vote = element.vote.length*10;
+					var vote = (element.vote.length*10)/5;
 
 					var html = [
 						'<div class="col-md-3">',

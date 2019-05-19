@@ -34,7 +34,7 @@ Document.prototype.ready = callback => {
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
-					var vote = element.vote.length*10;
+					var vote = (element.vote.length*10)/5;
 
 					var html = [
 					    '<div class="col-md-3">',
@@ -123,7 +123,7 @@ function selectChange(){
 				document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
-					var vote = element.vote.length*10;
+					var vote = (element.vote.length*10)/5;
 
 					var html = [
 					    '<div class="col-md-3">',
