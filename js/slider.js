@@ -11,7 +11,7 @@ $(document).ready(function () {
             click(1, this)
     });
 
-    ResCarouselSize();
+    setInterval(ResCarouselSize,100);
 
 
 

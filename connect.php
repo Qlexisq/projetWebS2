@@ -12,6 +12,8 @@ try {
 	// ID Sophie ne pas effacer
 	//MyPDO::setConfiguration('mysql:host=localhost;dbname=id9153549_goudimac;charset=utf8', 'root', ''); 
 	MyPDO::setConfiguration('mysql:host=localhost;dbname=goodimac;charset=utf8', 'root', 'root');
+    //ID Alexis
+    MyPDO::setConfiguration('mysql:host=localhost;dbname=goodimac;charset=utf8', 'root', '');
  //  $connexion = new PDO('mysql:host=localhost;dbname=id9153549_goudimac;charset=utf8', 'id9153549_admin', 'ImacKickstarter02');
 
 } catch (PDOException $e) {

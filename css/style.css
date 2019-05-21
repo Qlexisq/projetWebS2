@@ -435,6 +435,10 @@ label{
 	height: 200px;
 }
 
+label:hover{
+	cursor: pointer;
+}
+
 [type=radio] { 
 	position: absolute;
 	opacity: 0;
