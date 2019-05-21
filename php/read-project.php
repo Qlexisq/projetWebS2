@@ -39,7 +39,6 @@ SQL
 			FROM Project, State_project, Vote
 			WHERE Project.id_project= :projectID
 			AND Vote.id_project=Project.id_project
-			AND Vote.pourcentage_vote=1;
 SQL
 		);
 		$stmt->execute(['projectID'=>$project['id_project']]);

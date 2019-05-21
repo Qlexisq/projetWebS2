@@ -24,7 +24,7 @@
             <form class="" id="form-tri">
               <select name="tri" class="selectGallery">
                 <option value="" selected="selected">Trier par</option>
-                <option value="name-up">Nom croissant</option>
+                <option value="name-up" selected="selected">Nom croissant</option>
                 <option value="name-down">Nom décroissant</option>
                 <option value="date-up">Date croissante</option>
                 <option value="date-down">Date décroissante</option>
