@@ -17,7 +17,7 @@
   <div class="container-fluid myContainer">
     <div class="galleryProjects" >
       <div class="d-flex justify-content-between align-items-center">
-        <div class="title" id="tri">Les projets les plus 
+        <div class="title" id="tri">Tous les projets
         </div>
         <div>
           <button class="myButton selectButton">
