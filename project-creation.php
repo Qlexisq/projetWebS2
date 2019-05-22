@@ -23,6 +23,7 @@
       <div class="title">Lancer mon GOODIMAC</div>
       <div class="d-flex align-items-center flex-column">
         <div class="buttonSticker stepSticker d-flex justify-content-center align-items-center">1</div>
+          <span class="errorFormProjectMessage"></span>
         <div class="stepText">CHOIX DU SUPPORT</div>
       </div>
 
@@ -40,6 +41,7 @@
       </div>
       <div class="d-flex align-items-center flex-column">
         <div class="buttonSticker stepSticker d-flex justify-content-center align-items-center">2</div>
+          <span class="errorFormProjectMessage"></span>
         <div class="stepText">IMPORTATION DU VISUEL</div>
       </div>
       <div class="text-center">
@@ -59,6 +61,7 @@
       </div>
       <div class="d-flex align-items-center flex-column">
         <div class="buttonSticker stepSticker d-flex justify-content-center align-items-center">3</div>
+          <span class="errorFormProjectMessage"></span>
         <div class="stepText">DESCRIPTION DU GOODIMAC</div>
         Titre du GOODIMAC
         <input class="inputProjectTitle" type="text">

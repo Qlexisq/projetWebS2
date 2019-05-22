@@ -4,6 +4,7 @@ let label = document.querySelector("#import");
 
 input.addEventListener( 'change', function( e )
 {
+    console.log("aaa");
     let oldNode = label.childNodes[0];
     let fileName = '';
 

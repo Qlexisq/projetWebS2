@@ -19,6 +19,7 @@ session_start();
 
 
 if (isset($_GET['project'])) {
+    var_dump($_SESSION);exit();
     $item['project']     = $_GET['project'];
     $_SESSION["project"] = $item['project'];
 	$order ='name_project ASC';

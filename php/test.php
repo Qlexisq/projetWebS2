@@ -6,10 +6,10 @@
  * Time: 12:22
  */
 
-$alexis = "alexis";
-$a = <<<string
-Coucou c'estt moi $alexis
-string;
+$matches = [];
+$regex = "&([!_)({};.<>:/+~#[\]\*\\\|,\?\$€£%§])+&";
+$string = "hel!lo";
 
-echo $a;
 
+
+var_dump(preg_match_all($regex,$string,$matches));

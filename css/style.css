@@ -7,6 +7,7 @@
 
 	--light-red:#F55D3E;
 	--dark-red:#CE4D32;
+	--error-red:#D8000C;
 
 	--light-grey:#EFEFEF;
 	--medium-grey:#7C7C7C;
@@ -15,7 +16,17 @@
 	--main-font:'Roboto', sans-serif;
 	--title-font: 'Roboto Slab', serif;
 }
-
+@keyframes pulse{
+	0%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
 body{
 	font-family:var(--main-font);
 	color:var(--dark-grey);
@@ -661,7 +672,14 @@ label:hover{
 	border-top-left-radius: 23px;
 	border-bottom-right-radius: 23px;
 }
-
+.errorFormProject{
+	background-color: var(--error-red);
+	animation: pulse 1s linear infinite;
+	margin-bottom : 20px;
+}
+.errorFormProjectMessage{
+	color: var(--error-red);
+}
 /* Responsive */
 @media (max-width: 768px) {
 	/* menu */
