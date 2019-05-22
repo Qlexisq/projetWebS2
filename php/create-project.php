@@ -138,6 +138,8 @@ if (empty($message)) {
         mkdir($path);
     }
     if (move_uploaded_file($file_tmp, $file)) {
+        $path='./img/templates/1/';
+        $file = $path . $file_name;
         $sql = <<<SQL
 INSERT INTO template (link_template)
 VALUES (:file)
@@ -215,6 +217,20 @@ SQL;
         exit();
     }
     http_response_code(201);
+
+    $stmt = MyPDO::getInstance()->prepare(<<<SQL
+    SELECT  Project.id_project
+    FROM Project 
+    WHERE Project.name_project=:projectTitle;
+SQL
+    );
+    if($stmt->execute(['projectTitle' => $projectTitle])){
+        while (($row = $stmt->fetch()) !== false) {
+            $_SESSION["projectOpen"]= $row['id_project'];
+        }
+
+    }
+
     $message = array(
         "Message" => "Project created",
         "Code" => 1

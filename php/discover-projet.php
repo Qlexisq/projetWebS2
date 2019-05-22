@@ -80,6 +80,9 @@ SQL
         array_push($projects, $row);
     }
 
+
+
+
 	foreach ($projects as $key => $project) {
 		//récupère vote
 		$votes = array();
@@ -95,6 +98,21 @@ SQL
 			array_push($votes, $row['pourcentage_vote']);
 		}
 		$projects[$key]['vote'] = $votes;
+
+        //récupère template
+        $templates=array();
+        $stmt = MyPDO::getInstance()->prepare(<<<SQL
+            SELECT Template.link_template 
+            FROM Project, Template 
+            WHERE Project.id_project = :projectID 
+            AND Project.id_template = Template.id_template;
+SQL
+        );
+        $stmt->execute(['projectID'=>$project['id_project']]);
+        while (($row = $stmt->fetch()) !== false) {
+            array_push($templates, $row['link_template']);
+        }
+        $projects[$key]['template'] = $templates;
 	}
 
     echo json_encode($projects);

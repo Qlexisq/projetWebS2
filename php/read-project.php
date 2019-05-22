@@ -77,7 +77,24 @@ SQL
 			array_push($templates, $row['link_template']);
 		}
 		$projects[$key]['template'] = $templates;
+
+		//récupère goodies
+		$goodies=array();
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT Goodies.photo_goodies
+			FROM Project, Goodies
+			WHERE Project.id_project = :projectID 
+			AND Project.id_goodies = Goodies.id_goodies;
+SQL
+		);
+		$stmt->execute(['projectID'=>$project['id_project']]);
+		while (($row = $stmt->fetch()) !== false) {
+			array_push($goodies, $row['photo_goodies']);
+		}
+		$projects[$key]['goodies'] = $goodies;
+	
 	}
+		
 	
 
 	echo json_encode($projects);
