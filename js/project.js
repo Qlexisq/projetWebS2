@@ -65,7 +65,7 @@ function showProject(){
 						'<div class="projectDescription">' + element.description_project + '</div>',
 						'<div class="text-right projectButtonBox">',
 						'<!-- change data-target dynamically -->',
-						'<button class="myButton projectButton" data-toggle="modal" data-target="#not-logged">Soutenir',
+						'<button class="myButton projectButton" data-toggle="modal" data-target="#not-logged" id="soutien-'+element.id_project+'">Soutenir',
 						'<div class="buttonSticker projectButtonHeart d-flex justify-content-center align-items-center">',
 						'<img src="./img/heart.png"/>',
 						'</div>',
@@ -133,7 +133,7 @@ function youWillLove() {
 						'<div class="thumbnailText">' + element.description_project + '</div>',
 						'<div class="text-center thumbnailButtonBox">',
 						'<a class="thumbnailLink" href="./project.php">',
-						'<button class="myButton thumbnailButton" id="' + element.id_project + '">Soutenir',
+						'<button class="myButton thumbnailButton" id="soutien-' + element.id_project + '">Soutenir',
 						'<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 						'<img src="./img/heart.png"/>',
 						'</div>',
@@ -148,7 +148,7 @@ function youWillLove() {
 					var bar=document.getElementById('progress-bar-'+element.id_project);
 					bar.style.width = vote+'%';
 
-					document.getElementById(element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project).onclick = event => {
 						let params = {};
 						params['project'] = element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");

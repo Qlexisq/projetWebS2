@@ -72,7 +72,7 @@ function myProjects(){
 					var html = [
 					     '<div class="col-md-3">',
 				          '<div class=" projectThumbnail">',
-				            '<div class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',        
+				            '<div id="delete-'+element.id_project+'" class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',        
 				            '<div class="thumbnailImageBox text-center">',
 				              '<!-- change image file path dinamically -->',
 				              '<img class="thumbnailImage" src="'+element.link_template+'"/>',
@@ -89,7 +89,7 @@ function myProjects(){
 				            '<div class="thumbnailText">'+element.description_project+'</div>',
 				            '<div class="text-center thumbnailButtonBox">',
 				              '<a class="thumbnailLink" href="./project.php">',
-				                '<button class="myButton thumbnailButton" id="'+element.id_project+'">Soutenir',
+				                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'">Soutenir',
 				                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 				                    '<img class="" src="./img/heart.png">',
 				                 ' </div>',
@@ -105,7 +105,7 @@ function myProjects(){
 					var bar=document.getElementById('progress-bar-'+element.id_project);
 					bar.style.width = vote+'%';
 
-					document.getElementById(element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project).onclick = event => {
 						let params = {};
 						params['project'] =element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
@@ -148,8 +148,7 @@ function mySupport(){
 					var vote = (element.vote.length*10)/5;
 					var html = [
 					     '<div class="col-md-3">',
-				          '<div class=" projectThumbnail">',
-				            '<div class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',        
+				          '<div class=" projectThumbnail">',       
 				            '<div class="thumbnailImageBox text-center">',
 				              '<!-- change image file path dinamically -->',
 				              '<img class="thumbnailImage" src="'+element.link_template+'"/>',
@@ -166,7 +165,7 @@ function mySupport(){
 				            '<div class="thumbnailText">'+element.description_project+'</div>',
 				            '<div class="text-center thumbnailButtonBox">',
 				              '<a class="thumbnailLink" href="./project.php">',
-				                '<button class="myButton thumbnailButton" id="'+element.id_project+'">Soutenir',
+				                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'">Soutenir',
 				                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 				                    '<img class="" src="./img/heart.png">',
 				                 ' </div>',
@@ -182,7 +181,7 @@ function mySupport(){
 					var bar=document.getElementById('progress-bar-'+element.id_project);
 					bar.style.width = vote+'%';
 
-					document.getElementById(element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project).onclick = event => {
 						let params = {};
 						params['project'] =element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");

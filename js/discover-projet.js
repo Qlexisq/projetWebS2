@@ -55,7 +55,7 @@ Document.prototype.ready = callback => {
 					            '<div class="thumbnailText">'+element.description_project+'</div>',
 					            '<div class="text-center thumbnailButtonBox">',
 					            '<a class="thumbnailLink" href="./project.php">',
-					                '<button class="myButton thumbnailButton" id="'+element.id_project+'">Soutenir',
+					                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'">Soutenir',
 					                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 					                    '<img src="./img/heart.png"/>',
 					                  '</div>',
@@ -71,7 +71,7 @@ Document.prototype.ready = callback => {
 					var bar=document.getElementById('progress-bar-'+element.id_project);
 					bar.style.width = vote+'%';
 
-					document.getElementById(element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project).onclick = event => {
 						let params = {};
 						params['project'] =element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
@@ -144,7 +144,7 @@ function selectChange(){
 					            '<div class="thumbnailText">'+element.description_project+'</div>',
 					            '<div class="text-center thumbnailButtonBox">',
 					            '<a class="thumbnailLink" href="./project.php">',
-					                '<button class="myButton thumbnailButton" id="'+element.id_project+'">Soutenir',
+					                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'">Soutenir',
 					                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 					                    '<img src="./img/heart.png"/>',
 					                  '</div>',
@@ -159,7 +159,7 @@ function selectChange(){
 					var bar=document.getElementById('progress-bar-'+element.id_project);
 					bar.style.width = vote+'%';
 
-					document.getElementById(element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project).onclick = event => {
 						let params = {};
 						params['project'] =element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
