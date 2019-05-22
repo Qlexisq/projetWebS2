@@ -21,16 +21,17 @@
         <button class="myButton loginButtonLeft">Déjà inscrit</button>
         <a href="./register.php"><button class="myButton loginButtonRight">Nouveau</button></a>
       </div>
-      <form class="d-flex align-items-center flex-column">
+      <form class="d-flex align-items-center flex-column" id="form-login">
         <div class="loginText">Pseudo</div>
-        <input class="inputLogin" type="text">
+        <input class="inputLogin" id="pseudo-login" name="pseudo" type="text">
         <div class="loginText">Mot de passe</div>
-        <input class="inputLogin" type="text">
+        <input class="inputLogin" id="password-login" name="password" type="text">
       </form>
       <div class="text-center">
-        <button type="submit" class="myButton loginButton">Se connecter
+        <button type="submit" id="button-login" class="myButton loginButton">Se connecter
         </button>
       </div>
+      <script src="js/form-login.js" ></script>
     </div>
     <!-- container end -->  
   </div>
