@@ -75,7 +75,9 @@ function myProjects(){
 					var html = [
 					     '<div class="col-md-3">',
 				          '<div class=" projectThumbnail">',
-				            '<div id="delete-'+element.id_project+'" class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',        
+				          	'<a class="" href="./profile.php">',
+				            '<div id="delete-'+element.id_project+'" class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',
+				            '</a>',       
 				            '<div class="thumbnailImageBox text-center">',
 				              '<!-- change image file path dinamically -->',
 				              '<img class="thumbnailImage" src="'+element.link_template+'"/>',
@@ -119,7 +121,30 @@ function myProjects(){
 						// méthode GET
 						fetch(url);
 					};
-				});
+					document.getElementById("delete-"+element.id_project).onclick = event => {
+						let params = {};
+						params['delete'] =element.id_project;
+						params['image']=element.link_template;
+						let url = new URL("php/delete-project.php", "http://localhost/projetWebS2/");
+						//let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+						
+						console.log(url);
+
+						// méthode GET
+						 fetch(url, {method: 'post',
+					               mode: "same-origin",
+					                credentials: "same-origin",
+					                headers: {
+					                  "Content-Type": "application/json"
+					                },
+					                body: JSON.stringify({
+					                                        delete: params['delete'],
+					                                        image:params['image']
+					                                        
+					                                    })
+					                })
+										};
+							});
 			
 				console.log(data);
 			}
@@ -193,8 +218,20 @@ function mySupport(){
 						console.log(url);
 
 						// méthode GET
-						fetch(url);
-					};
+						fetch(url).then(response => {
+							return response.json();
+						})
+						.then(data => {
+							console.log(data);
+							if(data.code === 4){
+								alert(data.message);
+								window.location = "http://localhost/projetWebS2/profile.php";
+							} else{
+								alert(data.message);
+								window.location = "http://localhost/projetWebS2/profile.php";
+							}
+						});
+									};
 				});
 			
 				console.log(data);
