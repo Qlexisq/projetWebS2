@@ -88,7 +88,7 @@ if (is_code($_POST["projectDescription"])) {
 }
 
 
-$path = 'img/templates/';
+$path = '../img/templates/';
 $extensions = ['jpg', 'jpeg', 'png', 'gif'];
 
 $file_name = $_FILES['projectPhoto']['name'];
@@ -137,7 +137,7 @@ if (empty($message)) {
         mkdir($path);
     }
     if (move_uploaded_file($file_tmp, $file)) {
-        $path='./img/templates/1/';
+        $path='./img/templates/'.$_SESSION["user"]."/";
         $file = $path . $file_name;
         $sql = <<<SQL
 INSERT INTO template (link_template)

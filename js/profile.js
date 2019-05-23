@@ -14,6 +14,8 @@ Document.prototype.ready = callback => {
  	myPseudo();
 	myProjects();
 	mySupport();
+	let disconnectButton = document.querySelector("#disconnectButton");
+	disconnectButton.addEventListener("click", disconnect);
 })();
 
 function myPseudo(){
@@ -37,6 +39,7 @@ function myPseudo(){
 					
 					var html = [
 					    '<div class="title" style="margin-bottom:0px;">Mon profil : '+element.pseudo+'</div>',
+					     
 					].join("\n");
 					document.getElementById('profileProjects').insertAdjacentHTML('afterbegin',html);
 				});
@@ -225,5 +228,3 @@ function disconnect(){
 		});
 }
 
-let disconnectButton = document.querySelector("#disconnectButton");
-disconnectButton.addEventListener("click", disconnect);
