@@ -26,7 +26,7 @@
 						'<div class=" projectThumbnail">',
 						'<div class="thumbnailImageBox text-center">',
 						'<!-- change image file path dinamically -->',
-						 '<img class="thumbnailImage" src="'+element.photo_project+'"/>',
+						 '<img class="thumbnailImage" src="'+element.template+'"/>',
 						'</div>',
 						'<!-- change project title dinamically -->',
 						'<div class="thumbnailTitle">' + element.name_project + '</div>',
