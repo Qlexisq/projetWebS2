@@ -22,6 +22,7 @@ else {
 $projects = array();
 
 if($item['project']!="all"){
+	
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
 	FROM Project WHERE id_project=:projectID;
@@ -92,9 +93,40 @@ SQL
 			array_push($goodies, $row['photo_goodies']);
 		}
 		$projects[$key]['goodies'] = $goodies;
-	
-	}
+
+		$connexion=array();
+			
+		if(isset($_SESSION["user"])){
+			$connexion[0]=1;
+			$userVotes = array();
+			$stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT *
+			FROM Project, State_project, Vote
+			WHERE Project.id_project= :projectID
+			AND Vote.id_project=Project.id_project
+			AND Vote.id_user=:userID;
+SQL
+			);
+			$stmt->execute(['projectID'=>$project['id_project'],'userID'=>$_SESSION["user"]]);
+			while (($row = $stmt->fetch()) !== false) {
+				array_push($userVotes, $row);
+			}
+			if(empty($userVotes)){
+				$projects[$key]['alreadyVote'] = 0;
+			}
+			else{
+				$projects[$key]['alreadyVote'] = 1;
+			}
+			$projects[$key]['vote'] = $votes;
+		}
+		else{
+			$connexion[0]=0;
+		}
+		$projects[$key]['connexion'] = $connexion;
 		
+		}
+
+
 	
 
 	echo json_encode($projects);
