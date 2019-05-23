@@ -75,9 +75,9 @@ function myProjects(){
 					var html = [
 					     '<div class="col-md-3">',
 				          '<div class=" projectThumbnail">',
-				          	'<a class="" href="./profile.php">',
-				            '<div id="delete-'+element.id_project+'" class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',
-				            '</a>',       
+				          	
+				            '<div id="delete-'+element.id_project+'" data-toggle="modal" data-target="#delete" class="buttonSticker crossSticker d-flex justify-content-center align-items-center">x</div>',
+				                   
 				            '<div class="thumbnailImageBox text-center">',
 				              '<!-- change image file path dinamically -->',
 				              '<img class="thumbnailImage" src="'+element.link_template+'"/>',
@@ -121,7 +121,7 @@ function myProjects(){
 						// méthode GET
 						fetch(url);
 					};
-					document.getElementById("delete-"+element.id_project).onclick = event => {
+					document.getElementById("deleteYes").onclick = event => {
 						let params = {};
 						params['delete'] =element.id_project;
 						params['image']=element.link_template;

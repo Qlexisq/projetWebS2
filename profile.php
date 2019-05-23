@@ -23,7 +23,8 @@
             Voulez-vous vraiment supprimer ce projet ?
           </div>
           <div class="text-center topButtonArea">
-            <button class="myButton deleteButtonLeft">Oui</button></a>
+          <a class="" href="./profile.php">
+            <button class="myButton deleteButtonLeft" id="deleteYes">Oui</button></a>
             <button class="myButton deleteButtonRight" data-dismiss="modal">Non</button>
           </div>
         </div>
