@@ -88,7 +88,7 @@ if (is_code($_POST["projectDescription"])) {
 }
 
 
-$path = '../img/templates/';
+$path = 'img/templates/';
 $extensions = ['jpg', 'jpeg', 'png', 'gif'];
 
 $file_name = $_FILES['projectPhoto']['name'];
@@ -97,8 +97,7 @@ $file_type = $_FILES['projectPhoto']['type'];
 $file_size = $_FILES['projectPhoto']['size'];
 $file_ext = strtolower(explode('.', $_FILES['projectPhoto']['name'])[1]);
 
-//$path .= $_SESSION["user_id"]."/";
-$path .= "1/";
+$path .= $_SESSION["user"]."/";
 $file = $path . $file_name;
 
 if (file_exists($file)) {
@@ -157,8 +156,7 @@ SQL;
         }
 
         $templateID = $db->lastInsertId();
-        //$userId = $_SESSION["user_id"];
-        $userId = 1;
+        $userId = $_SESSION["user"];
 
         $sql = <<<SQL
 INSERT INTO templateuser (`id_template`, `id_user`)
@@ -203,7 +201,6 @@ SQL;
                 "Message" => "Error creating project",
                 "Code" => 5
             );
-            $_SESSION["projectOpen"] = $db->lastInsertId();
             echo json_encode($message);
             exit();
         }

@@ -36,7 +36,7 @@ function myPseudo(){
 				data.forEach(function(element) {
 					
 					var html = [
-					    '<div class="title">Mon profil : '+element.pseudo+'</div>',
+					    '<div class="title" style="margin-bottom:0px;">Mon profil : '+element.pseudo+'</div>',
 					].join("\n");
 					document.getElementById('profileProjects').insertAdjacentHTML('afterbegin',html);
 				});
@@ -203,3 +203,27 @@ function mySupport(){
 	// bloc catch appelé lorsqu'il y a une erreur
 
 }
+
+function disconnect(){
+	let url = new URL("php/disconnect.php", "http://localhost/projetWebS2/");
+	//let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+	console.log(url);
+
+	// méthode GET
+	fetch(url)
+		.then(response => {
+			return response.json();
+		})
+		.then(data => {
+			if(data.code === 1){
+				alert(data.message);
+				window.location = "http://localhost/projetWebS2/index.php";
+			} else{
+				alert(data.message);
+				window.location = "http://localhost/projetWebS2/profile.php";
+			}
+		});
+}
+
+let disconnectButton = document.querySelector("#disconnectButton");
+disconnectButton.addEventListener("click", disconnect);

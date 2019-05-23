@@ -34,6 +34,14 @@ document.getElementById('button-register').onclick = event =>{
                 })
         .then(response => {
             console.log(response)
-            return response
-        })
+            return response.json();
+        }).then(data => {
+            console.log(data);
+            if(data.Code === 1){
+                window.location =  "http://localhost/projetWebS2/profile.php";
+            } else {
+                alert(data.Message);
+                window.location = "http://localhost/projetWebS2/register.php";
+            }
+    });
 };

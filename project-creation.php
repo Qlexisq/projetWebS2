@@ -1,7 +1,5 @@
 <?php
-/*session_start();
-/* FOR TESTING PURPOSES - THIS LINE IS TO BE DELETED ONCE THE SIGNING IN PROCESS IS WORKING */
-/*$_SESSION["user_id"] = 1;*/
+//session_start();
 ?>
 <!doctype html>
 <head>
@@ -15,6 +13,9 @@
   <!-- Header : banner + menu -->
   <?php
   require_once('./php/menu.php');
+  if(!isset($_SESSION["user"])){
+      header('Location: http://localhost/projetWebS2/login.php');
+  }
   generate_header();
   ?>
   <!-- container -->
@@ -68,7 +69,6 @@
         Description
         <textarea class="inputProjectDescription"></textarea>
       </div>
-        <!-- <input type="hidden" name="userID" value="<?php echo $_SESSION["user_id"];?>">-->
       <div class="text-center">
 
               <button type="submit" class="myButton projectSubmitButton">Valider

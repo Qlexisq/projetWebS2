@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../connect.php";
@@ -88,20 +90,29 @@ while (($row = $stmt->fetch()) !== false) {
         }
     }
 }
-
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
+$db = MyPDO::getInstance();
+$stmt = $db->prepare(<<<SQL
     INSERT INTO User (firstname, lastname, pseudo, mail, password)
     VALUES(:firstname, :lastname, :pseudo, :mail, :password);
 SQL
 );
 if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $pseudo, 'mail' => $mail, 'password' => $password])){
-    echo json_encode("Register done");
+    session_regenerate_id(true);
+    $_SESSION["user"] = $db->lastInsertId();
+    $message = array(
+        "Message" => "Successfully registered",
+        "Code" => 1
+    );
+    echo json_encode( $message);
     http_response_code(200);
     exit();
 }
 else{
-    http_response_code(404);
-        echo json_encode("Error to insert");
-        exit();
+    $message = array(
+        "Message" => "Error while registering, please try again",
+        "Code" => 2
+    );
+    echo json_encode( $message);
+    exit();
 }
 ?>

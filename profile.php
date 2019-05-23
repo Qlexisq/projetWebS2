@@ -1,4 +1,4 @@
-
+<?php //session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -30,6 +30,7 @@
       </div>
     </div>
     <div class="profileProjects" id="profileProjects">
+        <button id="disconnectButton" class="myButton registerButtonLeft" style="margin:15px 0px">Se déconnecter</button>
       <!-- change pseudo dynamically -->
       
       <div class="profileLegend text-center">MES CRÉATIONS</div>

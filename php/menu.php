@@ -1,5 +1,13 @@
 <?php
+session_start();
 function generate_header(){
+    if(isset($_SESSION["user"])){
+        $link = "./profile.php";
+        $label = "Mon profil";
+    } else{
+        $link = "./login.php";
+        $label = "Se connecter";
+    }
 	$html = <<<HTML
 	<img class="w-100 d-none d-md-block" src="./img/banner.png"/>
 
@@ -13,7 +21,7 @@ function generate_header(){
 	<a class="nav-item nav-link" href="./project-creation.php">Créer mon projet</a>
 	<a class="nav-link d-none d-md-block" href="./index.php"><img class="logoNav" src="./img/logo_noir_court_goodimac.png"/></a>
 	<a class="nav-item nav-link" href="./about-us.php">À propos de nous</a>
-	<a class="nav-item nav-link" href="./profile.php">Mon Profil</a>
+	<a class="nav-item nav-link" href="$link">$label</a>
 	</div>
 	</nav>
 

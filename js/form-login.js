@@ -1,6 +1,10 @@
+let errorMessages = document.querySelectorAll(".errorFormProjectMessage");
+let errorPseudo = errorMessages[0];
+let errorPassword = errorMessages[1];
 document.getElementById('button-login').onclick = event =>{
     event.preventDefault();
-    
+    errorPassword.innerHTML = "";
+    errorPseudo.innerHTML = "";
 
 
 
@@ -29,6 +33,21 @@ document.getElementById('button-login').onclick = event =>{
                 })
         .then(response => {
             console.log(response)
-            return response
-        })
+            return response.json();
+        }).then(data => {
+            switch(data.code){
+                case 1:
+                    window.location = "http://localhost/projetWebS2/profile.php";
+                    break;
+                case 2:
+                    errorPseudo.innerHTML = data.message;
+                    break;
+                case 3:
+                    errorPassword.innerHTML = data.message;
+                    break;
+                case 4:
+                    alert(data.message);
+                    window.location = "http://localhost/projetWebS2/php/login-connect.php";
+            }
+        });
 };

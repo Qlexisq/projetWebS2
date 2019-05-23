@@ -48,21 +48,59 @@ if( !empty( $decoded['pseudoLogin']) && !empty($decoded['passwordLogin']))
 
 // Vérification de la connexion 
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    SELECT password FROM user WHERE pseudo = :pseudo;
+    SELECT id_user, password FROM user WHERE pseudo = :pseudo;
 SQL
 );
-$stmt->execute(['pseudo' => $pseudo]);
-
-while(($row = $stmt->fetch()) !== false)
-{
-    foreach($row as $value)
+if(!$stmt->execute(['pseudo' => $pseudo])){
+    http_response_code(400);
+    $message = array(
+        "message" => "Something went wrong",
+        "code" => 4
+    );
+    echo json_encode($message);
+    exit();
+} else{
+    $i=0;
+    while(($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false)
     {
-        if($value == $password)
+        $i++;
+        foreach($row as $value)
         {
-            echo json_encode("Login done");
-            http_response_code(200);
+            if($value == $password)
+            {
+                session_start();
+                $_SESSION["user"] = $row["id_user"];
+                http_response_code(200);
+                $message = array(
+                    "message" => "Login successfull",
+                    "code" => 1
+                );
+                echo json_encode($message);
+                exit();
+
+            }
         }
     }
+    if($i != 0){
+        http_response_code(400);
+        $message = array(
+            "message" => "Incorrect password",
+            "code" => 3
+        );
+        echo json_encode($message);
+        exit();
+    } else{
+        http_response_code(400);
+        $message = array(
+            "message" => "Incorrect login",
+            "code" => 2
+        );
+        echo json_encode($message);
+        exit();
+    }
+
 }
+
+
 
 ?>

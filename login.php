@@ -11,6 +11,9 @@
   <!-- Header : banner + menu -->
   <?php
   require_once('./php/menu.php');
+  if(isset($_SESSION["user"])){
+      header('Location: http://localhost/projetWebS2/profile.php');
+  }
   generate_header();
   ?>
   <!-- container -->
@@ -22,9 +25,9 @@
         <a href="./register.php"><button class="myButton loginButtonRight">Nouveau</button></a>
       </div>
       <form class="d-flex align-items-center flex-column" id="form-login">
-        <div class="loginText">Pseudo</div>
+        <div class="loginText">Pseudo <span class="errorFormProjectMessage"></span></div>
         <input class="inputLogin" id="pseudo-login" name="pseudo" type="text">
-        <div class="loginText">Mot de passe</div>
+        <div class="loginText">Mot de passe <span class="errorFormProjectMessage"></span></div>
         <input class="inputLogin" id="password-login" name="password" type="text">
       </form>
       <div class="text-center">

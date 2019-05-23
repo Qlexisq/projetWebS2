@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../connect.php";
@@ -14,9 +15,6 @@ if ($method !== 'get') {
     ));
     exit();
 }
-
-session_start();
-$_SESSION["user"]=1;
 
 if (isset($_SESSION["user"])) {
     //var_dump($_SESSION);exit();

@@ -112,6 +112,8 @@ function postProject(e) {
                 errorMessages[2].innerHTML = data.Message;
                 break;
             case 5:
+                alert("Server error");
+                window.location = "http://localhost/projetWebS2/project-creation";
                 break;
         }
         console.log(data);
