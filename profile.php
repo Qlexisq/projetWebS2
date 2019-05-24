@@ -1,4 +1,4 @@
-<?php //session_start(); ?>
+<?php session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -31,7 +31,9 @@
       </div>
     </div>
     <div class="profileProjects" id="profileProjects">
-        <button id="disconnectButton" class="myButton registerButtonLeft" style="margin:15px 0px">Se déconnecter</button>
+        <div id = "headerProfile" class="d-flex justify-content-between align-items-center">
+        <button id="disconnectButton" class="myButton registerButtonLeft" style="margin:50px 0;">Se déconnecter</button>
+        </div>
       <!-- change pseudo dynamically -->
       
       <div class="profileLegend text-center">MES CRÉATIONS</div>
