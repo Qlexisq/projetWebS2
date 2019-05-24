@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -28,7 +28,7 @@
         <div class="loginText">Pseudo <span class="errorFormProjectMessage"></span></div>
         <input class="inputLogin" id="pseudo-login" name="pseudo" type="text">
         <div class="loginText">Mot de passe <span class="errorFormProjectMessage"></span></div>
-        <input class="inputLogin" id="password-login" name="password" type="text">
+        <input class="inputLogin" id="password-login" name="password" type="password">
       </form>
       <div class="text-center">
         <button type="submit" id="button-login" class="myButton loginButton">Se connecter
