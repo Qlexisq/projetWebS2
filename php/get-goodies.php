@@ -5,6 +5,7 @@
  * Date: 18/05/2019
  * Time: 13:37
  */
+session_start ();
 
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -20,7 +21,7 @@ if ($method !== 'get') {
     exit();
 }
 
-session_start ();
+
 
 
 

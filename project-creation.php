@@ -1,5 +1,8 @@
 <?php
-//session_start();
+session_start();
+if(!isset($_SESSION["user"])){
+    header('Location: http://localhost/projetWebS2/login.php');
+}
 ?>
 <!doctype html>
 <head>
@@ -13,9 +16,6 @@
   <!-- Header : banner + menu -->
   <?php
   require_once('./php/menu.php');
-  if(!isset($_SESSION["user"])){
-      header('Location: http://localhost/projetWebS2/login.php');
-  }
   generate_header();
   ?>
   <!-- container -->

@@ -1,5 +1,4 @@
 <?php
-session_start();
 function generate_header(){
     if(isset($_SESSION["user"])){
         $link = "./profile.php";

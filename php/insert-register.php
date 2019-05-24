@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../connect.php";
@@ -97,6 +95,7 @@ $stmt = $db->prepare(<<<SQL
 SQL
 );
 if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $pseudo, 'mail' => $mail, 'password' => $password])){
+    session_start();
     session_regenerate_id(true);
     $_SESSION["user"] = $db->lastInsertId();
     $message = array(

@@ -1,7 +1,9 @@
 <?php
+session_start();
+
 header("Content-Type: application/json; charset=UTF-8");
 
- session_start();
+
 include_once "../connect.php";
 
 require('project.class.php');
