@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../connect.php";
@@ -87,17 +88,21 @@ SQL
 	foreach ($projects as $key => $project) {
 		//récupère vote
 		$votes = array();
-		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT Vote.pourcentage_vote
-			FROM Project, State_project, Vote
-			WHERE Project.id_project= :projectID
-			AND Vote.id_project=Project.id_project
+        $stmt = MyPDO::getInstance()->prepare(<<<SQL
+			SELECT COUNT(Vote.pourcentage_vote) as pourcentage_vote
+			FROM Vote
+			WHERE Vote.id_project = :projectId;
 SQL
-		);
-		$stmt->execute(['projectID'=>$project['id_project']]);
-		while (($row = $stmt->fetch()) !== false) {
-			array_push($votes, $row['pourcentage_vote']);
-		}
+        );
+
+        $stmt->execute(array(
+            ':projectId'=>$project["id_project"]
+        ));
+        $row = $stmt->fetch();
+        $voteCount = (int)$row['pourcentage_vote'];
+        for($i=0;$i<$voteCount;$i++){
+            $votes[$i] = 1;
+        }
 		$projects[$key]['vote'] = $votes;
 
         //récupère template
@@ -110,8 +115,10 @@ SQL
 SQL
         );
         $stmt->execute(['projectID'=>$project['id_project']]);
-        while (($row = $stmt->fetch()) !== false) {
-            array_push($templates, $row['link_template']);
+        $row = $stmt->fetch();
+        $voteCount = (int)$row['pourcentage_vote'];
+        for($i=0;$i<$voteCount;$i++){
+            $votes[$i] = 1;
         }
         $projects[$key]['template'] = $templates;
 	}

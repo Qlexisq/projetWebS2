@@ -33,15 +33,15 @@ function myPseudo(){
 		})
 		.then(data => {
 			if (data.length == 0) {
-				document.getElementById('profileProjects').appendChild(document.createTextNode("Nothing Found"));
+				document.getElementById('headerProfile').appendChild(document.createTextNode("Nothing Found"));
 			} else {
 				data.forEach(function(element) {
 					
 					var html = [
-					    '<div class="title" style="margin-bottom:0px;">Mon profil : '+element.pseudo+'</div>',
+					    '<div class="title" style="margin:0px;">Mon profil : '+element.pseudo+'</div>',
 					     
 					].join("\n");
-					document.getElementById('profileProjects').insertAdjacentHTML('afterbegin',html);
+					document.getElementById('headerProfile').insertAdjacentHTML('afterbegin',html);
 				});
 			
 				console.log(data);
@@ -185,7 +185,7 @@ function mySupport(){
 				            '<div class="thumbnailTitle">'+element.name_project+'</div>',
 				            '<div class="progress">',
 				              '<!-- change progress-bar width(style.css) and aria-valuenow dynamically -->',
-				              '<div class="progress-bar" id="progress-bar-'+element.id_project+'" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
+				              '<div class="progress-bar" id="progress-bar-'+element.id_project+'-support" role="progressbar" aria-valuenow="'+vote+'" aria-valuemin="0" aria-valuemax="100"></div>',
 				            '</div>',
 				            '<!-- change percentage dynamically -->',
 				            '<div class="thumbnailPercentage">Soutenu à '+vote+'%</div>',
@@ -193,7 +193,7 @@ function mySupport(){
 				            '<div class="thumbnailText">'+element.description_project+'</div>',
 				            '<div class="text-center thumbnailButtonBox">',
 				              '<a class="thumbnailLink" href="./project.php">',
-				                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'">Soutenir',
+				                '<button class="myButton thumbnailButton" id="soutien-'+element.id_project+'-support">Soutenir',
 				                  '<div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">',
 				                    '<img class="" src="./img/heart.png">',
 				                 ' </div>',
@@ -206,10 +206,11 @@ function mySupport(){
 					
 
 					document.getElementById('mySupport').insertAdjacentHTML('beforeend',html);
-					var bar=document.getElementById('progress-bar-'+element.id_project);
+					var bar=document.getElementById('progress-bar-'+element.id_project+'-support');
+					console.log(bar);
 					bar.style.width = vote+'%';
 
-					document.getElementById("soutien-"+element.id_project).onclick = event => {
+					document.getElementById("soutien-"+element.id_project+"-support").onclick = event => {
 						let params = {};
 						params['project'] =element.id_project;
 						let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
