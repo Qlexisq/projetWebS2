@@ -189,7 +189,13 @@ function showProject() {
                                     return response.json();
                                 })
                                 .then(data => {
-                                  
+                                    if(data.code === 1){
+                                        let button = document.querySelector("#closeModalVoteSuccess");
+                                        button.addEventListener("click", function(){
+                                            window.location = "http://localhost/projetWebS2/project.php";
+                                            //window.location = "https://imackickstarter.000webhostapp.com/project.php";
+                                        });
+                                    }
                                 });
                         };
                     }

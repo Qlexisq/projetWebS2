@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -38,7 +38,7 @@
         </div>
         <div class="text-center topButtonArea">
           <a href="./projects-gallery.php"><button class="myButton voteButtonLeft">Voir d'autres projets</button></a>
-          <a href="./project.php"><button class="myButton voteButtonRight" data-dismiss="modal">Fermer</button></a>
+          <a href="./project.php"><button id="closeModalVoteSuccess" class="myButton voteButtonRight" data-dismiss="modal">Fermer</button></a>
         </div>
       </div>
     </div>
