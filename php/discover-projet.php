@@ -116,7 +116,6 @@ SQL
         );
         $stmt->execute(['projectID'=>$project['id_project']]);
         $row = $stmt->fetch();
-        $voteCount = (int)$row['pourcentage_vote'];
         for($i=0;$i<$voteCount;$i++){
             $votes[$i] = 1;
         }
