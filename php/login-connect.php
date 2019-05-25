@@ -37,6 +37,7 @@ if( !empty( $decoded['pseudoLogin']) && !empty($decoded['passwordLogin']))
     // verification à faire  
     $pseudo = htmlspecialchars($decoded['pseudoLogin']);
     $password = htmlspecialchars($decoded['passwordLogin']);
+    $passwordBin=bin2hex($password);
     
     
 }else 
@@ -48,7 +49,7 @@ if( !empty( $decoded['pseudoLogin']) && !empty($decoded['passwordLogin']))
 
 // Vérification de la connexion 
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    SELECT id_user, password FROM user WHERE pseudo = :pseudo;
+    SELECT id_user, password FROM User WHERE pseudo = :pseudo;
 SQL
 );
 if(!$stmt->execute(['pseudo' => $pseudo])){
@@ -66,7 +67,7 @@ if(!$stmt->execute(['pseudo' => $pseudo])){
         $i++;
         foreach($row as $value)
         {
-            if($value == $password)
+            if($value == $passwordBin)
             {
                 session_start();
                 $_SESSION["user"] = $row["id_user"];

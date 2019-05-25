@@ -13,8 +13,8 @@ document.getElementById('button-register').onclick = event =>{
     if(form.password.value) params['password-register'] = form.password.value;
     console.log(params);
     
-    
-    let url = new URL("/projetWebS2/php/insert-register.php", "http://localhost");
+    let url = new URL("php/insert-register.php", "https://imackickstarter.000webhostapp.com/");
+   // let url = new URL("/projetWebS2/php/insert-register.php", "http://localhost");
  //   url.search = new URLSearchParams(params);
     console.log(url);
 
@@ -37,11 +37,18 @@ document.getElementById('button-register').onclick = event =>{
             return response.json();
         }).then(data => {
             console.log(data);
-            if(data.Code === 1){
-                window.location =  "http://localhost/projetWebS2/profile.php";
+            if(data.code == 1){
+                window.location =  "https://imackickstarter.000webhostapp.com/login.php";
+               // window.location =  "http://localhost/projetWebS2/profile.php";
+            } 
+            if(data.code == 3){
+                alert("Email not valid");
+                window.location =  "https://imackickstarter.000webhostapp.com/register.php";
+               // window.location =  "http://localhost/projetWebS2/profile.php";
             } else {
                 alert(data.Message);
-                window.location = "http://localhost/projetWebS2/register.php";
+                window.location = "https://imackickstarter.000webhostapp.com/register.php";
+               // window.location = "http://localhost/projetWebS2/register.php";
             }
     });
 };

@@ -42,12 +42,22 @@ if( !empty( $decoded['nameRegister'])
     $pseudo = htmlspecialchars($decoded['pseudoRegister']);
     $mail = htmlspecialchars($decoded['mailRegister']);
     $password = htmlspecialchars($decoded['passwordRegister']);
+    $passwordBin=bin2hex($password);
     
 }else 
 {
    // http_response_code(404);
     echo json_encode("No request provided");
     exit();
+}
+
+if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
+        $message = array(
+            "message" => "Email not valid",
+            "code" => 3
+        );
+        echo json_encode($message);  
+        exit();
 }
 
 
@@ -94,7 +104,7 @@ $stmt = $db->prepare(<<<SQL
     VALUES(:firstname, :lastname, :pseudo, :mail, :password);
 SQL
 );
-if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $pseudo, 'mail' => $mail, 'password' => $password])){
+if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $pseudo, 'mail' => $mail, 'password' => $passwordBin])){
     session_start();
     session_regenerate_id(true);
     $_SESSION["user"] = $db->lastInsertId();
@@ -102,7 +112,7 @@ if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $
         "Message" => "Successfully registered",
         "Code" => 1
     );
-    echo json_encode( $message);
+    echo json_encode($message);
     http_response_code(200);
     exit();
 }
@@ -111,7 +121,7 @@ else{
         "Message" => "Error while registering, please try again",
         "Code" => 2
     );
-    echo json_encode( $message);
+    echo json_encode($message);
     exit();
 }
 ?>
