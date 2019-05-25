@@ -140,7 +140,7 @@ if (empty($message)) {
         $path='./img/templates/'.$_SESSION["user"]."/";
         $file = $path . $file_name;
         $sql = <<<SQL
-INSERT INTO template (link_template)
+INSERT INTO Template (link_template)
 VALUES (:file)
 SQL;
         $db = MyPDO::getInstance();
@@ -159,7 +159,7 @@ SQL;
         $userId = $_SESSION["user"];
 
         $sql = <<<SQL
-INSERT INTO templateuser (`id_template`, `id_user`)
+INSERT INTO Templateuser (`id_template`, `id_user`)
 VALUES ($templateID, $userId);
 SQL;
         if (MyPDO::getInstance()->exec($sql) == 0) {
@@ -180,7 +180,7 @@ SQL;
         $photo = "";
 
         $sql = <<<SQL
-INSERT INTO `project`(`id_project`, `name_project`, `photo_project`, `description_project`, `date_project`, `id_user`, `id_template`, `id_goodies`, `id_state`)
+INSERT INTO `Project`(`id_project`, `name_project`, `photo_project`, `description_project`, `date_project`, `id_user`, `id_template`, `id_goodies`, `id_state`)
 VALUES (:idProjet, :projectName, :projectPhoto, :projectDescription, :projectDate, :userId, :templateId, :goodiesId, :stateId)
 SQL;
         $db = MyPDO::getInstance();

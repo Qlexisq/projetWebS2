@@ -115,10 +115,9 @@ SQL
 SQL
         );
         $stmt->execute(['projectID'=>$project['id_project']]);
-        $row = $stmt->fetch();
-        for($i=0;$i<$voteCount;$i++){
-            $votes[$i] = 1;
-        }
+        while (($row = $stmt->fetch()) !== false) {
+        array_push($templates, $row['link_template']);
+         }
         $projects[$key]['template'] = $templates;
 	}
 
