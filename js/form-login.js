@@ -1,24 +1,25 @@
 let errorMessages = document.querySelectorAll(".errorFormProjectMessage");
 let errorPseudo = errorMessages[0];
 let errorPassword = errorMessages[1];
+
 document.getElementById('button-login').onclick = event =>{
     event.preventDefault();
     errorPassword.innerHTML = "";
     errorPseudo.innerHTML = "";
 
-
-
+    // Collect data of the form login
     const form = document.getElementById("form-login");
     let params = {};
     if(form.pseudo.value) params['pseudo-login'] = form.pseudo.value;
     if(form.password.value) params['password-login'] = form.password.value;
    console.log(params);
     
-    
+    // Send data to the login-connect.php file
     let url = new URL("/projetWebS2/php/login-connect.php", "http://localhost");
- //   url.search = new URLSearchParams(params);
+
     console.log(url);
 
+    // Use the method POST to send data
     fetch(url, {method: 'post',
                mode: "same-origin",
                 credentials: "same-origin",

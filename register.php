@@ -15,6 +15,7 @@
   ?>
 
   <?php
+  // Error message if the user don't fill out the form fields
   $nameErr = $firstnameErr = $pseudoErr = $mailErr = $passwordErr= "";
   $name = $firstname = $pseudo = $mail = $password = "";
 

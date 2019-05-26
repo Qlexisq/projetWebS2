@@ -7,6 +7,7 @@ require('project.class.php');
 
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
+// Verify the method used is POST
 if ($method !== 'post') {
     http_response_code(405);
     echo json_encode(array(
@@ -31,12 +32,14 @@ if ($contentType === "application/json") {
   } 
 }
 
+// Verify that parameters are not empty
 if( !empty( $decoded['nameRegister'])
     && !empty($decoded['firstnameRegister'])
    && !empty($decoded['pseudoRegister'])
     &&!empty($decoded['mailRegister'])
    && !empty($decoded['passwordRegister'])){
-    // verification à faire  
+
+    // Transform special characters
     $name = htmlspecialchars($decoded['nameRegister']);
     $firstname = htmlspecialchars($decoded['firstnameRegister']);
     $pseudo = htmlspecialchars($decoded['pseudoRegister']);
@@ -46,11 +49,11 @@ if( !empty( $decoded['nameRegister'])
     
 }else 
 {
-   // http_response_code(404);
     echo json_encode("No request provided");
     exit();
 }
 
+// Verify the email
 if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
         $message = array(
             "message" => "Email not valid",
@@ -61,34 +64,32 @@ if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
 }
 
 
-//Véfirication si le pseudo non pris
+// Check if the nickname is not taken
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
    SELECT pseudo FROM User;
 SQL
 );
 $stmt->execute();
-//  $stmt->setFecthMode(PDO::FETCH_ASSOC);
+
 while (($row = $stmt->fetch()) !== false) {
-    foreach($row as $value)
-{
-    if($value == $pseudo)
-    {
-        http_response_code(404);
-        echo json_encode("Error from register : name already exists");
-        exit();
-       }
+    foreach($row as $value){
+        if($value == $pseudo)
+        {
+            http_response_code(404);
+            echo json_encode("Error from register : name already exists");
+            exit();
+        }
+    }
 }
-}
 
 
-
-//verification mail
+// Check if the mail is not taken
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
  SELECT mail FROM User;
 SQL
 );
 $stmt->execute();
-//    $stmt->setFecthMode(PDO::FETCH_ASSOC);
+
 while (($row = $stmt->fetch()) !== false) {
     foreach($row as $value){
         if($value == $mail){
@@ -98,6 +99,8 @@ while (($row = $stmt->fetch()) !== false) {
         }
     }
 }
+
+// Create a new row in the table User 
 $db = MyPDO::getInstance();
 $stmt = $db->prepare(<<<SQL
     INSERT INTO User (firstname, lastname, pseudo, mail, password)

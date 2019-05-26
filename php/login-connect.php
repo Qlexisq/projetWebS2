@@ -8,6 +8,7 @@ require('project.class.php');
 
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
+// Verify the method used is POST
 if ($method !== 'post') {
     http_response_code(405);
     echo json_encode(array(
@@ -32,9 +33,10 @@ if ($contentType === "application/json") {
   } 
 }
 
+// Verify that parameters are not empty
 if( !empty( $decoded['pseudoLogin']) && !empty($decoded['passwordLogin']))
 {
-    // verification à faire  
+    // Transform special characters
     $pseudo = htmlspecialchars($decoded['pseudoLogin']);
     $password = htmlspecialchars($decoded['passwordLogin']);
     $passwordBin=bin2hex($password);
@@ -42,12 +44,11 @@ if( !empty( $decoded['pseudoLogin']) && !empty($decoded['passwordLogin']))
     
 }else 
 {
-   // http_response_code(404);
     echo json_encode("No request provided");
     exit();
 }
 
-// Vérification de la connexion 
+// Check if the password corresponds to the username
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
     SELECT id_user, password FROM User WHERE pseudo = :pseudo;
 SQL
