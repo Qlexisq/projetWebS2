@@ -7,9 +7,7 @@ include_once "../connect.php";
 
 require ( 'project.class.php' );
 
-
-
-
+//check if a specific project is open
 if (isset($_SESSION["projectOpen"])){
 	$item['project']=$_SESSION["projectOpen"];
 	http_response_code(200);
@@ -20,14 +18,12 @@ else {
 	exit();
 }
 
-
+//search all informations about the project
 $projects = array();
-
 if($item['project']!="all"){
-	
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM Project WHERE id_project=:projectID;
+		SELECT *
+		FROM Project WHERE id_project=:projectID;
 SQL
 	);
 	$stmt->execute(['projectID'=>$item['project']]);
@@ -106,11 +102,11 @@ SQL
 			$connexion[0]=1;
 			$userVotes = array();
 			$stmt = MyPDO::getInstance()->prepare(<<<SQL
-			SELECT *
-			FROM Project, State_project, Vote
-			WHERE Project.id_project= :projectID
-			AND Vote.id_project=Project.id_project
-			AND Vote.id_user=:userID;
+				SELECT *
+				FROM Project, State_project, Vote
+				WHERE Project.id_project= :projectID
+				AND Vote.id_project=Project.id_project
+				AND Vote.id_user=:userID;
 SQL
 			);
 			$stmt->execute(['projectID'=>$project['id_project'],'userID'=>$_SESSION["user"]]);
@@ -130,11 +126,7 @@ SQL
 		}
 		$projects[$key]['connexion'] = $connexion;
 		
-		}
-
-
-	
-
+	}
 	echo json_encode($projects);
 }
 else{

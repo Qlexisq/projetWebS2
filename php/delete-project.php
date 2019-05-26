@@ -1,7 +1,6 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
 
-
 include_once "../connect.php";
 
 require('project.class.php');
@@ -16,6 +15,7 @@ if ($method !== 'post') {
     exit();
 }
 
+//check post content
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
 if ($contentType === "application/json") {
@@ -31,9 +31,7 @@ if ($contentType === "application/json") {
   } 
 }
 
-
-
-if( !empty( $decoded['delete']) && !empty($decoded['image']))
+if(!empty( $decoded['delete']) && !empty($decoded['image']))
 {
     // verification à faire  
     $delete = $decoded['delete'];
@@ -45,10 +43,9 @@ if( !empty( $decoded['delete']) && !empty($decoded['image']))
     exit();
 }
 
-// Vérification de la connexion 
-
+// SQL : delete from many table
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-   DELETE FROM Vote
+    DELETE FROM Vote
     WHERE Vote.id_project=:projectID
 SQL
 );
@@ -63,9 +60,8 @@ SQL
 
 }
 
-
- $stmt = MyPDO::getInstance()->prepare(<<<SQL
-   DELETE FROM Template
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
+    DELETE FROM Template
     WHERE Template.id_template
     IN (SELECT Project.id_template from Project WHERE Project.id_project=:projectID);
 SQL
@@ -80,9 +76,8 @@ if(!$stmt->execute(['projectID' => $delete])){
     exit();
 } 
 
-
-  $stmt = MyPDO::getInstance()->prepare(<<<SQL
-   DELETE FROM Templateuser
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
+    DELETE FROM Templateuser
     WHERE Templateuser.id_user
     IN (SELECT Project.id_user from Project WHERE Project.id_project=:projectID);
 SQL
@@ -97,9 +92,8 @@ if(!$stmt->execute(['projectID' => $delete])){
     exit();
 } 
 
-
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-   DELETE FROM Project
+    DELETE FROM Project
     WHERE Project.id_project=:projectID
 SQL
 );
@@ -113,16 +107,13 @@ if(!$stmt->execute(['projectID' => $delete])){
     exit();
 } 
 else{
-
-    /* Fichier à supprimer */
+   //file image template suppr from server
    $fichier ='.'. $image;
 
-   if( file_exists ( $fichier)){
-     unlink( $fichier ) ;
+   if(file_exists($fichier)){
+     unlink($fichier) ;
    }
-    
-
-     http_response_code(200);
+    http_response_code(200);
     $message = array(
         "message" => "Delete project",
         "code" => 1
@@ -130,6 +121,4 @@ else{
     echo json_encode($message);
     exit();
 }
-
-
 ?>

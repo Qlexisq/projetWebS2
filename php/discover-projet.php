@@ -17,9 +17,7 @@ if ($method !== 'get') {
     exit();
 }
 
-
-
-
+//check what we have to show
 if (isset($_GET['project'])) {
     //var_dump($_SESSION);exit();
     $item['project']     = $_GET['project'];
@@ -66,27 +64,25 @@ else {
 //SQL COMMAND
 $projects = array();
 
+//if it's gallery project request
 if ($item['project'] == "all" ) {
     $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    SELECT  Project.id_project, Project.name_project,Project.photo_project,Project.description_project,Project.date_project,Project.id_user,Project.id_template,
-	Project.id_goodies,Project.id_state, IFNULL(SUM(Vote.pourcentage_vote), 0) as Pourcent 
-	FROM Project 
-	LEFT JOIN Vote ON Project.id_project = Vote.id_project 
-	GROUP BY Project.id_project, Project.name_project 
-	ORDER BY $order;
+        SELECT  Project.id_project, Project.name_project,Project.photo_project,Project.description_project,Project.date_project,Project.id_user,Project.id_template,
+    	Project.id_goodies,Project.id_state, IFNULL(SUM(Vote.pourcentage_vote), 0) as Pourcent 
+    	FROM Project 
+    	LEFT JOIN Vote ON Project.id_project = Vote.id_project 
+    	GROUP BY Project.id_project, Project.name_project 
+    	ORDER BY $order;
 SQL
     );
-    
     $stmt->execute();
     while (($row = $stmt->fetch()) !== false) {
         array_push($projects, $row);
     }
 
-
-
-
+    //check for all project informations
 	foreach ($projects as $key => $project) {
-		//récupère vote
+		//vote
 		$votes = array();
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
 			SELECT COUNT(Vote.pourcentage_vote) as pourcentage_vote
@@ -94,7 +90,6 @@ SQL
 			WHERE Vote.id_project = :projectId;
 SQL
         );
-
         $stmt->execute(array(
             ':projectId'=>$project["id_project"]
         ));
@@ -105,7 +100,7 @@ SQL
         }
 		$projects[$key]['vote'] = $votes;
 
-        //récupère template
+        //template
         $templates=array();
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
             SELECT Template.link_template 
@@ -120,10 +115,9 @@ SQL
          }
         $projects[$key]['template'] = $templates;
 	}
-
     echo json_encode($projects);
 } else {
+    //go on a specific projet
 	$_SESSION["projectOpen"] = $item['project'];
-   
     exit();
 }

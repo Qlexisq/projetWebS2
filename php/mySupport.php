@@ -17,9 +17,8 @@ if ($method !== 'get') {
     exit();
 }
 
+//check if user is login
 if (isset($_SESSION["user"])) {
-    //var_dump($_SESSION);exit();
-   
     http_response_code(200);
 }
 else {
@@ -30,27 +29,23 @@ else {
 
 //SQL COMMAND
 $users = array();
-
-
-    $stmt = MyPDO::getInstance()->prepare(<<<SQL
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
     SELECT  User.pseudo
 	FROM User 
 	WHERE User.id_user=:userID;
 SQL
-    );
-    
-   if($stmt->execute(['userID'=>$_SESSION["user"]])){
+);
+if($stmt->execute(['userID'=>$_SESSION["user"]])){
         
-   }
-   else{
-        http_response_code(404);
-        echo json_encode("User not found");
-        exit();
+}
+else{
+    http_response_code(404);
+    echo json_encode("User not found");
+    exit();
 }
 
-   
-	
-        $stmt = MyPDO::getInstance()->prepare(<<<SQL
+//search projects that the user vote for it
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
     SELECT Project.id_project, Project.name_project,Project.photo_project,Project.description_project,Project.date_project,Project.id_user,Project.id_template,
     Project.id_goodies,Project.id_state, Template.link_template
     FROM Project, Template, Vote, User
@@ -61,17 +56,13 @@ SQL
 SQL
     );
     
-
-
-
-
-    $stmt->execute(['userID'=>$_SESSION["user"]]);
+$stmt->execute(['userID'=>$_SESSION["user"]]);
     while (($row = $stmt->fetch()) !== false) {
         array_push($users, $row);
     }
-
+    //get all information about projects
     foreach ($users as $key => $user) {
-		//récupère vote
+		//vote
 		$votes = array();
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
 			SELECT COUNT(Vote.pourcentage_vote) as pourcentage_vote
@@ -79,7 +70,6 @@ SQL
 			WHERE Vote.id_project = :projectId;
 SQL
         );
-
         $stmt->execute(array(
             ':projectId'=>$user["id_project"]
         ));
@@ -89,9 +79,6 @@ SQL
             $votes[$i] = 1;
         }
 		$users[$key]['vote'] = $votes;
-
-       }
-	
-
-    echo json_encode($users);
+    }
+echo json_encode($users);
 

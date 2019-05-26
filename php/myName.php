@@ -17,9 +17,8 @@ if ($method !== 'get') {
     exit();
 }
 
+//check if the user is login with session
 if (isset($_SESSION["user"])) {
-    //var_dump($_SESSION);exit();
-   
     http_response_code(200);
 }
 else {
@@ -29,43 +28,25 @@ else {
 }
 
 //SQL COMMAND
+//search pseudo user with id
 $users = array();
-
-
-    $stmt = MyPDO::getInstance()->prepare(<<<SQL
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
     SELECT  User.pseudo
 	FROM User 
 	WHERE User.id_user=:userID;
 SQL
     );
     
-   if($stmt->execute(['userID'=>$_SESSION["user"]])){
-             while (($row = $stmt->fetch()) !== false) {
+if($stmt->execute(['userID'=>$_SESSION["user"]])){
+    while (($row = $stmt->fetch()) !== false) {
         array_push($users, $row);
     }  
-   }
-   else{
-        http_response_code(404);
-        echo json_encode("User not found");
-        exit();
+}
+else{
+    http_response_code(404);
+    echo json_encode("User not found");
+    exit();
 }
 
-   
-	
-        $stmt = MyPDO::getInstance()->prepare(<<<SQL
-    SELECT Project.id_project, Project.name_project,Project.photo_project,Project.description_project,Project.date_project,Project.id_user,Project.id_template,
-    Project.id_goodies,Project.id_state, Template.link_template
-    FROM Project, Template
-    WHERE Project.id_user=:userID
-    AND Project.id_template = Template.id_template;
-SQL
-    );
-    
-
-
-
-
-
-
-    echo json_encode($users);
+echo json_encode($users);
 

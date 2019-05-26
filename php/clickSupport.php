@@ -3,7 +3,6 @@ session_start();
 
 header("Content-Type: application/json; charset=UTF-8");
 
-
 include_once "../connect.php";
 
 require('project.class.php');
@@ -33,7 +32,8 @@ if ($contentType === "application/json") {
 	} 
 }
 
-if( !empty( $decoded['soutien']))
+//check vote post
+if(!empty( $decoded['soutien']))
 {
 		// verification à faire  
 		$soutien = $decoded['soutien'];
@@ -44,42 +44,28 @@ if( !empty( $decoded['soutien']))
 		exit();
 }
 
-// Vérification de la connexion 
-
-
-		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+// SQL : insert vote
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	 INSERT INTO Vote 
 	 VALUES (:projectID,:userID,1);
 SQL
 );
-		 if(!$stmt->execute(['projectID' => $soutien,'userID' => $_SESSION['user']])){
-			http_response_code(400);
-			$message = array(
-					"message" => "Something went wrong",
-					"code" => 0
-			);
-			echo json_encode($message);
-			exit();
-
-		}
-			else{
-
-
-
-			 http_response_code(200);
-			$message = array(
-					"message" => "Support done",
-					"code" => 1
-			);
-			echo json_encode($message);
-			exit();
-	 }
-	
- 
-
-
-
-
-
-
+if(!$stmt->execute(['projectID' => $soutien,'userID' => $_SESSION['user']])){
+	http_response_code(400);
+	$message = array(
+		"message" => "Something went wrong",
+		"code" => 0
+	);
+	echo json_encode($message);
+	exit();
+}
+else{
+	http_response_code(200);
+	$message = array(
+		"message" => "Support done",
+		"code" => 1
+	);
+	echo json_encode($message);
+	exit();
+}
 ?>

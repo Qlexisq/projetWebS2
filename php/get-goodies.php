@@ -21,10 +21,6 @@ if ($method !== 'get') {
     exit();
 }
 
-
-
-
-
 if (isset($_GET['goodies'])){
     $item['goodies'] = $_GET['goodies'];
     $_SESSION["goodies"] = $item['goodies'];
@@ -35,7 +31,6 @@ else {
     echo json_encode("No request provided");
     exit();
 }
-
 
 $goodies = array();
 
