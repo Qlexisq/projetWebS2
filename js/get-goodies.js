@@ -1,6 +1,4 @@
 // document ready in ES6
-
-
 Document.prototype.ready = callback => {
     if (callback && typeof callback === 'function') {
         document.addEventListener("DOMContentLoaded", () => {
@@ -14,9 +12,9 @@ Document.prototype.ready = callback => {
 (function() {
     // construction des queries
     let params = {};
-    params['goodies'] ="all";
-    let url = new URL("php/get-goodies.php", "http://localhost/projetWebS2/");
-    //let url = new URL("php/get-goodies.php", "https://imackickstarter.000webhostapp.com/");
+    params['goodies'] = "all";
+    //let url = new URL("php/get-goodies.php", "http://localhost/projetWebS2/");
+    let url = new URL("php/get-goodies.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
     console.log(url);
 
@@ -28,23 +26,23 @@ Document.prototype.ready = callback => {
         .then(data => {
             console.log(data);
             if (data.length == 0) {
-                document.getElementById('project').insertAdjacentHTML('beforeend',"There must have been an error with the request, no way we have no goodies");
+                document.getElementById('project').insertAdjacentHTML('beforeend', "There must have been an error with the request, no way we have no goodies");
             } else {
                 data.forEach(function(element) {
                     let html = [
                         '<div class="item">',
-                            '<div>',
-                                '<label>',
-                                    '<input type="radio" name="support" value="'+element.id_goodies+'">',
-                                    '<img  src="'+element.photo_goodies+'" title="'+element.description_goodies+'">',
-                                '</label>',
-                                '<div class="supportName">',
-                                    element.name_goodies,
-                                '</div>',
-                            '</div>',
+                        '<div>',
+                        '<label>',
+                        '<input type="radio" name="support" value="' + element.id_goodies + '">',
+                        '<img  src="' + element.photo_goodies + '" title="' + element.description_goodies + '">',
+                        '</label>',
+                        '<div class="supportName">',
+                        element.name_goodies,
+                        '</div>',
+                        '</div>',
                         '</div>',
                     ].join("\n");
-                    document.querySelector('.MultiCarousel-inner').insertAdjacentHTML('beforeend',html);
+                    document.querySelector('.MultiCarousel-inner').insertAdjacentHTML('beforeend', html);
                 });
 
                 /**************************** HERE IS THE SLIDER.JS CONTENT *******************************/
@@ -54,7 +52,7 @@ Document.prototype.ready = callback => {
                 var itemsDiv = ('.MultiCarousel-inner');
                 var itemWidth = "";
 
-                $('.leftLst, .rightLst').click(function () {
+                $('.leftLst, .rightLst').click(function() {
                     var condition = $(this).hasClass("leftLst");
                     if (condition)
                         click(0, this);
@@ -67,7 +65,7 @@ Document.prototype.ready = callback => {
 
 
 
-                $(window).resize(function () {
+                $(window).resize(function() {
                     ResCarouselSize();
                 });
 
@@ -81,7 +79,7 @@ Document.prototype.ready = callback => {
                     var itemsSplit = '';
                     var sampwidth = $(itemsMainDiv).width();
                     var bodyWidth = $('body').width();
-                    $(itemsDiv).each(function () {
+                    $(itemsDiv).each(function() {
                         id = id + 1;
                         var itemNumbers = $(this).find(itemClass).length;
                         btnParentSb = $(this).parent().attr(dataItems);
@@ -92,21 +90,18 @@ Document.prototype.ready = callback => {
                         if (bodyWidth >= 1200) {
                             incno = itemsSplit[3];
                             itemWidth = sampwidth / incno;
-                        }
-                        else if (bodyWidth >= 992) {
+                        } else if (bodyWidth >= 992) {
                             incno = itemsSplit[2];
                             itemWidth = sampwidth / incno;
-                        }
-                        else if (bodyWidth >= 768) {
+                        } else if (bodyWidth >= 768) {
                             incno = itemsSplit[1];
                             itemWidth = sampwidth / incno;
-                        }
-                        else {
+                        } else {
                             incno = itemsSplit[0];
                             itemWidth = sampwidth / incno;
                         }
                         $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-                        $(this).find(itemClass).each(function () {
+                        $(this).find(itemClass).each(function() {
                             $(this).outerWidth(itemWidth);
                         });
 
@@ -133,8 +128,7 @@ Document.prototype.ready = callback => {
                             translateXval = 0;
                             $(el + ' ' + leftBtn).addClass("over");
                         }
-                    }
-                    else if (e == 1) {
+                    } else if (e == 1) {
                         var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
                         translateXval = parseInt(xds) + parseInt(itemWidth * s);
                         $(el + ' ' + leftBtn).removeClass("over");
@@ -159,8 +153,7 @@ Document.prototype.ready = callback => {
                     var Parent = "#" + $(ee).parent().attr("id");
                     if ($('body').width() >= 992) {
                         var slide = $(Parent).attr("data-slide");
-                    }
-                    else{
+                    } else {
                         var slide = 1;
                     }
                     ResCarousel(ell, Parent, slide);

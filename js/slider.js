@@ -1,9 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var itemsMainDiv = ('.MultiCarousel');
     var itemsDiv = ('.MultiCarousel-inner');
     var itemWidth = "";
 
-    $('.leftLst, .rightLst').click(function () {
+    $('.leftLst, .rightLst').click(function() {
         var condition = $(this).hasClass("leftLst");
         if (condition)
             click(0, this);
@@ -11,12 +11,12 @@ $(document).ready(function () {
             click(1, this)
     });
 
-    setInterval(ResCarouselSize,100);
+    setInterval(ResCarouselSize, 100);
 
 
 
 
-    $(window).resize(function () {
+    $(window).resize(function() {
         ResCarouselSize();
     });
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
         var itemsSplit = '';
         var sampwidth = $(itemsMainDiv).width();
         var bodyWidth = $('body').width();
-        $(itemsDiv).each(function () {
+        $(itemsDiv).each(function() {
             id = id + 1;
             var itemNumbers = $(this).find(itemClass).length;
             btnParentSb = $(this).parent().attr(dataItems);
@@ -41,21 +41,18 @@ $(document).ready(function () {
             if (bodyWidth >= 1200) {
                 incno = itemsSplit[3];
                 itemWidth = sampwidth / incno;
-            }
-            else if (bodyWidth >= 992) {
+            } else if (bodyWidth >= 992) {
                 incno = itemsSplit[2];
                 itemWidth = sampwidth / incno;
-            }
-            else if (bodyWidth >= 768) {
+            } else if (bodyWidth >= 768) {
                 incno = itemsSplit[1];
                 itemWidth = sampwidth / incno;
-            }
-            else {
+            } else {
                 incno = itemsSplit[0];
                 itemWidth = sampwidth / incno;
             }
             $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-            $(this).find(itemClass).each(function () {
+            $(this).find(itemClass).each(function() {
                 $(this).outerWidth(itemWidth);
             });
 
@@ -82,8 +79,7 @@ $(document).ready(function () {
                 translateXval = 0;
                 $(el + ' ' + leftBtn).addClass("over");
             }
-        }
-        else if (e == 1) {
+        } else if (e == 1) {
             var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
             translateXval = parseInt(xds) + parseInt(itemWidth * s);
             $(el + ' ' + leftBtn).removeClass("over");
@@ -97,19 +93,18 @@ $(document).ready(function () {
     }
 
     //It is used to get some elements from btn
-/*    function click(ell, ee) {
-        var Parent = "#" + $(ee).parent().attr("id");
-        var slide = $(Parent).attr("data-slide");
-        ResCarousel(ell, Parent, slide);
-    }
-    */
+    /*    function click(ell, ee) {
+            var Parent = "#" + $(ee).parent().attr("id");
+            var slide = $(Parent).attr("data-slide");
+            ResCarousel(ell, Parent, slide);
+        }
+        */
 
     function click(ell, ee) {
         var Parent = "#" + $(ee).parent().attr("id");
         if ($('body').width() >= 992) {
             var slide = $(Parent).attr("data-slide");
-        }
-        else{
+        } else {
             var slide = 1;
         }
         ResCarousel(ell, Parent, slide);

@@ -11,16 +11,14 @@ Document.prototype.ready = callback => {
 
 (function() {
     showProject();
-
-
 })();
 
 function showProject() {
     // construction des queries
     let params = {};
     params['project'] = "";
-    let url = new URL("php/read-project.php", "http://localhost/projetWebS2/");
-    //let url = new URL("php/read-project.php", "https://imackickstarter.000webhostapp.com/");
+    //let url = new URL("php/read-project.php", "http://localhost/projetWebS2/");
+    let url = new URL("php/read-project.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
     console.log(url);
 
@@ -35,9 +33,11 @@ function showProject() {
                 document.getElementById('project').insertAdjacentHTML('beforeend', "Nothing found");
             } else {
                 data.forEach(function(element) {
+                    //show project select
                     var vote = (element.vote.length * 10) / 5;
                     document.title = "GOODIMAC - " + element.name_project;
 
+                    //if the user isn't log
                     if (element.connexion == 0) {
                         var html = [
                             '<div class="projectContent">',
@@ -78,6 +78,7 @@ function showProject() {
                             ' </div>',
                         ].join("\n");
                     }
+                    //if the user is connect and hasn't vote yet
                     if (element.connexion == 1 && element.alreadyVote == 0) {
                         var html = [
                             '<div class="projectContent">',
@@ -118,6 +119,7 @@ function showProject() {
                             ' </div>',
                         ].join("\n");
                     }
+                    //if the user is connect and has already vote
                     if (element.connexion == 1 && element.alreadyVote == 1) {
                         var html = [
                             '<div class="projectContent">',
@@ -158,17 +160,17 @@ function showProject() {
                             ' </div>',
                         ].join("\n");
                     }
-
-
                     document.getElementById('project').insertAdjacentHTML('beforeend', html);
                     var bar = document.getElementById('select-progress-bar-' + element.id_project);
                     bar.style.width = vote + '%';
+
+                    //click on support button for vote
                     if (element.connexion == 1 && element.alreadyVote == 0) {
                         document.getElementById("soutien-" + element.id_project).onclick = event => {
                             let params = {};
                             params['soutien'] = element.id_project;
-                            let url = new URL("php/clickSupport.php", "http://localhost/projetWebS2/");
-                            //let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+                            //let url = new URL("php/clickSupport.php", "http://localhost/projetWebS2/");
+                            let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
 
                             console.log(url);
 
@@ -189,11 +191,11 @@ function showProject() {
                                     return response.json();
                                 })
                                 .then(data => {
-                                    if(data.code === 1){
+                                    if (data.code === 1) {
                                         let button = document.querySelector("#closeModalVoteSuccess");
-                                        button.addEventListener("click", function(){
-                                            window.location = "http://localhost/projetWebS2/project.php";
-                                            //window.location = "https://imackickstarter.000webhostapp.com/project.php";
+                                        button.addEventListener("click", function() {
+                                            //window.location = "http://localhost/projetWebS2/project.php";
+                                            window.location = "https://imackickstarter.000webhostapp.com/project.php";
                                         });
                                     }
                                 });
@@ -217,8 +219,8 @@ function youWillLove() {
     let params = {};
     params['project'] = "all";
     params['tri'] = 'random';
-    let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
-    //let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+    //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+    let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
     console.log(url);
     var i = 0;
@@ -233,6 +235,7 @@ function youWillLove() {
                 document.getElementById('galleryProjects').appendChild(document.createTextNode("Nothing Found"));
             } else {
                 data.forEach(function(element) {
+                    //show random 4 projects
                     var vote = (element.vote.length * 10) / 5;
 
                     var html = [
@@ -269,11 +272,12 @@ function youWillLove() {
                     var bar = document.getElementById('progress-bar-' + element.id_project);
                     bar.style.width = vote + '%';
 
+                    //click on support button
                     document.getElementById(element.id_project).onclick = event => {
                         let params = {};
                         params['project'] = element.id_project;
-                        let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
-                        //let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+                        //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+                        let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
                         console.log(url);
 
