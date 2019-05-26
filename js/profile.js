@@ -23,7 +23,7 @@ function myPseudo() {
     //let url = new URL("php/myName.php", "http://localhost/projetWebS2/");
     let url = new URL("php/myName.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)
@@ -43,11 +43,11 @@ function myPseudo() {
                     document.getElementById('headerProfile').insertAdjacentHTML('afterbegin', html);
                 });
 
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 }
@@ -58,7 +58,7 @@ function myProjects() {
     //let url = new URL("php/profile.php", "http://localhost/projetWebS2/");
     let url = new URL("php/profile.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)
@@ -115,7 +115,7 @@ function myProjects() {
                         //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
-                        console.log(url);
+                        //console.log(url);
                         // méthode GET
                         fetch(url);
                     };
@@ -128,7 +128,7 @@ function myProjects() {
                         //let url = new URL("php/delete-project.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/delete-projet.php", "https://imackickstarter.000webhostapp.com/");
 
-                        console.log(url);
+                        //console.log(url);
 
                         // méthode GET
                         fetch(url, {
@@ -147,11 +147,11 @@ function myProjects() {
                     };
                 });
 
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 }
@@ -162,7 +162,7 @@ function mySupport() {
     //let url = new URL("php/mySupport.php", "http://localhost/projetWebS2/");
     let url = new URL("php/mySupport.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)
@@ -209,7 +209,7 @@ function mySupport() {
 
                     document.getElementById('mySupport').insertAdjacentHTML('beforeend', html);
                     var bar = document.getElementById('progress-bar-' + element.id_project + '-support');
-                    console.log(bar);
+                    //console.log(bar);
                     bar.style.width = vote + '%';
 
                     document.getElementById("soutien-" + element.id_project + "-support").onclick = event => {
@@ -218,14 +218,14 @@ function mySupport() {
                         //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
-                        console.log(url);
+                        //console.log(url);
 
                         // méthode GET
                         fetch(url).then(response => {
                                 return response.json();
                             })
                             .then(data => {
-                                console.log(data);
+                                //console.log(data);
                                 if (data.code === 4) {
                                     alert(data.message);
                                     window.location = "https://imackickstarter.000webhostapp.com/profile.php";
@@ -239,11 +239,11 @@ function mySupport() {
                     };
                 });
 
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 
@@ -252,7 +252,7 @@ function mySupport() {
 function disconnect() {
     //let url = new URL("php/disconnect.php", "http://localhost/projetWebS2/");
     let url = new URL("php/disconnect.php", "https://imackickstarter.000webhostapp.com/");
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)

@@ -20,7 +20,7 @@ function showProject() {
     //let url = new URL("php/read-project.php", "http://localhost/projetWebS2/");
     let url = new URL("php/read-project.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)
@@ -28,7 +28,7 @@ function showProject() {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            //console.log(data);
             if (data.length == 0) {
                 document.getElementById('project').insertAdjacentHTML('beforeend', "Nothing found");
             } else {
@@ -172,7 +172,7 @@ function showProject() {
                             //let url = new URL("php/clickSupport.php", "http://localhost/projetWebS2/");
                             let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
 
-                            console.log(url);
+                            //console.log(url);
 
                             // méthode GET
                             fetch(url, {
@@ -207,7 +207,7 @@ function showProject() {
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 }
@@ -222,7 +222,7 @@ function youWillLove() {
     //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
     let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
     var i = 0;
     // méthode GET
     fetch(url)
@@ -279,7 +279,7 @@ function youWillLove() {
                         //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
-                        console.log(url);
+                        //console.log(url);
 
                         // méthode GET
                         fetch(url);
@@ -289,11 +289,11 @@ function youWillLove() {
                     }
                     i++;
                 });
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 };

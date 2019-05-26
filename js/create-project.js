@@ -94,7 +94,7 @@ function postProject(e) {
         Client Missing info
         Server error = 5
          */
-        console.log(data.Code);
+        //console.log(data.Code);
         switch (data.Code) {
             case 1:
                 window.location = "https://imackickstarter.000webhostapp.com/project.php";
@@ -119,6 +119,6 @@ function postProject(e) {
                 //window.location = "http://localhost/projetWebS2/project-creation";
                 break;
         }
-        console.log(data);
+        //console.log(data);
     });
 }

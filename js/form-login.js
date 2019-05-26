@@ -12,13 +12,13 @@ document.getElementById('button-login').onclick = event => {
     let params = {};
     if (form.pseudo.value) params['pseudo-login'] = form.pseudo.value;
     if (form.password.value) params['password-login'] = form.password.value;
-    console.log(params);
+    //console.log(params);
 
     // Send data to the login-connect.php file
     let url = new URL("php/login-connect.php", "https://imackickstarter.000webhostapp.com/");
     //let url = new URL("/projetWebS2/php/login-connect.php", "http://localhost");
 
-    console.log(url);
+    //console.log(url);
 
     // Use the method POST to send data
     fetch(url, {
@@ -35,7 +35,7 @@ document.getElementById('button-login').onclick = event => {
             })
         })
         .then(response => {
-            console.log(response)
+            //console.log(response)
             return response.json();
         }).then(data => {
             switch (data.code) {

@@ -23,7 +23,7 @@ Document.prototype.ready = callback => {
     //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
     let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // GET method
     fetch(url)
@@ -79,17 +79,17 @@ Document.prototype.ready = callback => {
                         //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
-                        console.log(url);
+                        //console.log(url);
 
                         // méthode GET
                         fetch(url);
                     };
                 });
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 
@@ -103,7 +103,7 @@ function selectChange() {
 
     if (this.selectedIndex !== 0) {
         if (form.tri.value) params['tri'] = form.tri.value;
-        console.log(form.tri.value);
+        //console.log(form.tri.value);
     } else {
         params['tri'] = 'name-up';
 
@@ -111,7 +111,7 @@ function selectChange() {
     //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
     let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // GET method
     fetch(url)
@@ -167,17 +167,17 @@ function selectChange() {
                         //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                         let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                         url.search = new URLSearchParams(params);
-                        console.log(url);
+                        //console.log(url);
 
                         // méthode GET
                         fetch(url);
                     };
                 });
-                console.log(data);
+                //console.log(data);
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 

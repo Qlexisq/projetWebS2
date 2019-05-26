@@ -6,7 +6,7 @@ params['tri'] = 'pourcent-up';
 //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
 let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
 url.search = new URLSearchParams(params);
-console.log(url);
+//console.log(url);
 var i = 0;
 // méthode GET
 fetch(url)
@@ -62,7 +62,7 @@ fetch(url)
                     //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
                     let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
                     url.search = new URLSearchParams(params);
-                    console.log(url);
+                    //console.log(url);
 
                     // méthode GET
                     fetch(url);
@@ -72,10 +72,10 @@ fetch(url)
                 }
                 i++;
             });
-            console.log(data);
+            //console.log(data);
         }
     })
     .catch(error => {
-        console.log(error);
+        //console.log(error);
     });
 // bloc catch appelé lorsqu'il y a une erreur

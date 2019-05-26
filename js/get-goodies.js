@@ -16,7 +16,7 @@ Document.prototype.ready = callback => {
     //let url = new URL("php/get-goodies.php", "http://localhost/projetWebS2/");
     let url = new URL("php/get-goodies.php", "https://imackickstarter.000webhostapp.com/");
     url.search = new URLSearchParams(params);
-    console.log(url);
+    //console.log(url);
 
     // méthode GET
     fetch(url)
@@ -24,7 +24,7 @@ Document.prototype.ready = callback => {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            //console.log(data);
             if (data.length == 0) {
                 document.getElementById('project').insertAdjacentHTML('beforeend', "There must have been an error with the request, no way we have no goodies");
             } else {
@@ -162,7 +162,7 @@ Document.prototype.ready = callback => {
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
     // bloc catch appelé lorsqu'il y a une erreur
 

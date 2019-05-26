@@ -9,12 +9,12 @@ document.getElementById('button-register').onclick = event => {
     if (form.pseudo.value) params['pseudo-register'] = form.pseudo.value;
     if (form.mail.value) params['mail-register'] = form.mail.value;
     if (form.password.value) params['password-register'] = form.password.value;
-    console.log(params);
+    //console.log(params);
 
     // Send data to the insert-register.php file
     let url = new URL("php/insert-register.php", "https://imackickstarter.000webhostapp.com/");
 
-    console.log(url);
+    //console.log(url);
 
     // Use the method POST to send data
     fetch(url, {
@@ -33,10 +33,10 @@ document.getElementById('button-register').onclick = event => {
             })
         })
         .then(response => {
-            console.log(response)
+            //console.log(response)
             return response.json();
         }).then(data => {
-            console.log(data);
+            //console.log(data);
             if (data.code == 1) {
                 window.location = "https://imackickstarter.000webhostapp.com/login.php";
                 // window.location =  "http://localhost/projetWebS2/profile.php";
