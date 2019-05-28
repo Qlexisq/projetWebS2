@@ -170,7 +170,7 @@ function showProject() {
                             let params = {};
                             params['soutien'] = element.id_project;
                             //let url = new URL("php/clickSupport.php", "http://localhost/projetWebS2/");
-                            let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+                            let url = new URL("php/clickSupport.php", "https://imackickstarter.000webhostapp.com/");
 
                             //console.log(url);
 
