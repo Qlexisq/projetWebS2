@@ -26,7 +26,8 @@ fetch(url)
                     '<div class=" projectThumbnail">',
                     '<div class="thumbnailImageBox text-center">',
                     '<!-- change image file path dinamically -->',
-                    '<img class="thumbnailImage" src="' + element.template + '"/>',
+                    '<a class="" href="./project.php">',
+                    '<img class="thumbnailImage" id="image-'+element.id_project+'" src="' + element.template + '"/></a>',
                     '</div>',
                     '<!-- change project title dinamically -->',
                     '<div class="thumbnailTitle">' + element.name_project + '</div>',
@@ -67,6 +68,18 @@ fetch(url)
                     // méthode GET
                     fetch(url);
                 };
+                 document.getElementById("image-" + element.id_project).onclick = event => {
+                    let params = {};
+                    params['project'] = element.id_project;
+                    //let url = new URL("php/discover-projet.php", "http://localhost/projetWebS2/");
+                    let url = new URL("php/discover-projet.php", "https://imackickstarter.000webhostapp.com/");
+                    url.search = new URLSearchParams(params);
+                    //console.log(url);
+
+                    // méthode GET
+                    fetch(url);
+                };
+
                 if (i == 3) {
                     throw BreakException;
                 }
