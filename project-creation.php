@@ -1,7 +1,8 @@
 <?php
 session_start();
 if(!isset($_SESSION["user"])){
-    header('Location: http://localhost/projetWebS2/login.php');
+    header('Location: https://imackickstarter.000webhostapp.com/login.php');
+    // header('Location: http://localhost/projetWebS2/login.php');
 }
 ?>
 <!doctype html>

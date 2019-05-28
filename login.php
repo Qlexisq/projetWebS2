@@ -12,7 +12,8 @@
   <?php
   require_once('./php/menu.php');
   if(isset($_SESSION["user"])){
-      header('Location: http://localhost/projetWebS2/profile.php');
+      header('Location: https://imackickstarter.000webhostapp.com/profile.php');
+     // header('Location: http://localhost/projetWebS2/profile.php');
   }
   generate_header();
   ?>
