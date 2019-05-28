@@ -3,9 +3,10 @@
   $html = <<<HTML
         <div class="col-md-3">
           <div class=" projectThumbnail">
+            <button class="buttonSticker crossSticker d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#delete">x</button>
             <div class="thumbnailImageBox text-center">
               <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src=""/>
+              <a href=""><img class="thumbnailImage" src="./img/test/test1.jpg"/></a>
             </div>
             <!-- change project title dinamically -->
             <div class="thumbnailTitle">Titre du projet</div>
@@ -17,12 +18,11 @@
             <div class="thumbnailPercentage">Soutenu à 50%</div>
             <!-- change description dynamically -->
             <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <!--display only on index.php and projects-gallery.php -->
             <div class="text-center thumbnailButtonBox">
               <a class="thumbnailLink" href="./project.php">
                 <button class="myButton thumbnailButton">Soutenir
                   <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img src="./img/heart.png"/>
+                    <img class="" src="./img/heart.png">
                   </div>
                 </button>
               </a>

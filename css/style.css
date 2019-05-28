@@ -7,6 +7,7 @@
 
 	--light-red:#F55D3E;
 	--dark-red:#CE4D32;
+	--error-red:#D8000C;
 
 	--light-grey:#EFEFEF;
 	--medium-grey:#7C7C7C;
@@ -15,7 +16,17 @@
 	--main-font:'Roboto', sans-serif;
 	--title-font: 'Roboto Slab', serif;
 }
-
+@keyframes pulse{
+	0%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
 body{
 	font-family:var(--main-font);
 	color:var(--dark-grey);
@@ -35,8 +46,21 @@ body{
 	color:white;
 }
 
-.myNav img{
+.myNav .logoNav{
 	height:60px;
+}
+
+.logoMobile{
+	width:80%;
+}
+
+.menuIcon{
+	height: 100%;
+}
+
+.navbar-toggler{
+	width: 20%;
+	font-size: 30px;
 }
 
 /* all pages */
@@ -84,6 +108,22 @@ body{
 	margin-bottom: 50px;
 }
 
+.crossSticker{
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	background-color: var(--light-red);
+	color: white;
+	font-weight: bold;
+	right: 0%;
+	top: -2%;
+	font-size: 20px;
+}
+
+.crossSticker:focus{
+	outline: none;
+}
+
 
 .thumbnailImageBox{
 	height:200px;
@@ -101,6 +141,9 @@ body{
 	margin-bottom: 10px;
 	font-weight: bold;
 	font-size: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
 }
 
 .progress{ /*is a bootstrap style*/
@@ -129,6 +172,9 @@ body{
 	color:var(--medium-grey);
 	font-size: 15px;
 	margin-bottom: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
 }
 
 .thumbnailButtonBox{
@@ -240,7 +286,40 @@ body{
 	margin-left: 70px;
 	margin-right:70px;
 }
+
+.selectButton{
+	background-color: var(--dark-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+	font-size: 20px;
+}
+
+.selectGallery{
+	color: white;
+	border: none;
+	background: none;
+}
+.selectGallery option{
+	font-family: var(--main-font);
+	color: white;
+	border: none;
+	background:var(--dark-grey) ;
+}
+
 /* profile */
+.deleteButtonLeft{
+	background-color: var(--light-green);
+	border-top-right-radius: 23px;
+	border-bottom-left-radius: 23px;
+}
+
+.deleteButtonRight{
+	background-color: var(--medium-grey);
+	border-top-left-radius: 23px;
+	border-bottom-right-radius: 23px;
+}
+
+
 .profileProjects{
 	margin-left: 70px;
 	margin-right:70px;
@@ -371,6 +450,10 @@ body{
 
 label{
 	height: 200px;
+}
+
+label:hover{
+	cursor: pointer;
 }
 
 [type=radio] { 
@@ -594,4 +677,141 @@ label{
 	background-color: var(--dark-grey);
 	border-top-left-radius: 23px;
 	border-bottom-right-radius: 23px;
+}
+.errorFormProject{
+	background-color: var(--error-red);
+	animation: pulse 1s linear infinite;
+	margin-bottom : 20px;
+}
+.errorFormProjectMessage{
+	color: var(--error-red);
+}
+/* Responsive */
+@media (max-width: 768px) {
+	/* menu */
+	.myNav{
+		padding-left: 20px;
+		padding-right: 20px;
+		height: auto;
+	}
+
+	/* index */
+	.indexBg{
+		padding-right: 10px;
+		padding-left:10px;
+	}
+
+	.indexTitle{
+		font-size: 20px;
+	}
+
+	.indexButtonLeft{
+		width: 70%;
+	}
+
+	.indexButtonRight{
+		margin-top: 10px;
+		width: 70%;
+	}
+
+	.indexProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.buttonArrow{
+		top: 58%
+	}
+
+	/* projects gallery */
+	.galleryProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.selectButton{
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom: 30px;
+	}
+
+	/* profile */
+	.profileProjects {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	/* project creation */
+	.creationContainer {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.inputProjectTitle{
+		width:100%;
+	}
+
+	.inputProjectDescription{
+		width:100%;
+	}
+
+	/* about us */
+	.aboutUs {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	.aboutUsImage{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	/* project */
+	.suggestions{
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.projectContent{
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	.voteButtonLeft{
+		width: 60%;
+		font-size: 15px;
+	}
+
+	.voteButtonRight{
+		width: 60%;
+		font-size: 15px;
+		margin-top: 10px;
+	}
+
+	/* register + login*/
+	.loginTitle {
+		margin-left: 20px;
+	}
+	
+	.loginContainer{
+		margin-left: 20px;
+		margin-right:20px;
+		padding: 20px;
+	}
+
+	.inputLogin{
+		width: 100%;
+	}
+
+	.loginButtonLeft, .loginButtonRight, .registerButtonRight, .registerButtonLeft{
+		width: 60%;
+		font-size: 15px;
+	}
+
+	.loginButtonRight, .registerButtonRight{
+		margin-top: 10px;
+	}
+
+	.loginButton{
+		font-size: 15px;
+	}
 }

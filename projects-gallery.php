@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -15,228 +15,32 @@
   ?>
   <!-- container -->
   <div class="container-fluid myContainer">
-    <div class="galleryProjects">
-      <div class="title">Les projets les plus *selon le tri*</div>
-      <div class="row">
+    <div class="galleryProjects" >
+      <div class="d-md-flex justify-content-between align-items-center">
+        <div class="title" id="tri">Tous les projets
+        </div>
+        <div>
+          <button class="myButton selectButton">
+            <form class="" id="form-tri">
+              <select name="tri" class="selectGallery">
+                <option value="" selected="selected">Trier par</option>
+                <option value="name-up" selected="selected">Nom croissant</option>
+                <option value="name-down">Nom décroissant</option>
+                <option value="date-up">Date croissante</option>
+                <option value="date-down">Date décroissante</option>
+                <option value="pourcent-up">Les plus soutenu</option>
+                <option value="pourcent-down">Les moins soutenu</option>
+                <option value="type">Type</option>
+              </select>
+            </form>
+          </button>
+        </div>
+      </div>
+      <div class="row" id="galleryProjects">
         <!-- dynamic beginning, please delete this part when you call the thumbnails dynamically-->
         <!-- the template is in thumbnail.php -->
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test1.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img src="./img/heart.png"/>
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test2.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test3.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test4.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test1.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test2.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test3.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class=" projectThumbnail">
-            <div class="thumbnailImageBox text-center">
-              <!-- change image file path dinamically -->
-              <img class="thumbnailImage" src="./img/test/test4.jpg"/>
-            </div>
-            <!-- change project title dinamically -->
-            <div class="thumbnailTitle">Titre du projet</div>
-            <div class="progress">
-              <!-- change progress-bar width(style.css) and aria-valuenow dynamically -->
-              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- change percentage dynamically -->
-            <div class="thumbnailPercentage">Soutenu à 50%</div>
-            <!-- change description dynamically -->
-            <div class="thumbnailText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ipsum nisl. Aenean rutrum sapien ac arcu ornare, vel vehicula.</div>
-            <div class="text-center thumbnailButtonBox">
-              <a class="thumbnailLink" href="./project.php">
-                <button class="myButton thumbnailButton">Soutenir
-                  <div class="buttonSticker buttonHeart d-flex justify-content-center align-items-center">
-                    <img class="" src="./img/heart.png">
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
+
         <!-- dynamic end -->
       </div>
     </div>
@@ -245,6 +49,7 @@
 
     <!-- container end -->  
   </div>
+  <script src="js/discover-projet.js" crossorigin="anonymous"></script>
   <!-- JavaScript for Bootstrap -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

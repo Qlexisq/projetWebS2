@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!doctype html>
 <head>
   <?php
@@ -11,26 +11,31 @@
   <!-- Header : banner + menu -->
   <?php
   require_once('./php/menu.php');
+  if(isset($_SESSION["user"])){
+      header('Location: https://imackickstarter.000webhostapp.com/profile.php');
+     // header('Location: http://localhost/projetWebS2/profile.php');
+  }
   generate_header();
   ?>
   <!-- container -->
   <div class="container-fluid myContainer">
-    <div class="title loginTitle">Connection</div>
+    <div class="title loginTitle">Connexion</div>
     <div class="loginContainer">
       <div class="text-center topButtonArea">
         <button class="myButton loginButtonLeft">Déjà inscrit</button>
         <a href="./register.php"><button class="myButton loginButtonRight">Nouveau</button></a>
       </div>
-      <form class="d-flex align-items-center flex-column">
-        <div class="loginText">Pseudo</div>
-        <input class="inputLogin" type="text">
-        <div class="loginText">Mot de passe</div>
-        <input class="inputLogin" type="text">
+      <form class="d-flex align-items-center flex-column" id="form-login">
+        <div class="loginText">Pseudo <span class="errorFormProjectMessage"></span></div>
+        <input class="inputLogin" id="pseudo-login" name="pseudo" type="text">
+        <div class="loginText">Mot de passe <span class="errorFormProjectMessage"></span></div>
+        <input class="inputLogin" id="password-login" name="password" type="password">
       </form>
       <div class="text-center">
-        <button type="submit" class="myButton loginButton">Se connecter
+        <button type="submit" id="button-login" class="myButton loginButton">Se connecter
         </button>
       </div>
+      <script src="js/form-login.js" ></script>
     </div>
     <!-- container end -->  
   </div>
