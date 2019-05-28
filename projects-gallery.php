@@ -16,10 +16,10 @@
   <!-- container -->
   <div class="container-fluid myContainer">
     <div class="galleryProjects" >
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-md-flex justify-content-between align-items-center">
         <div class="title" id="tri">Tous les projets
         </div>
-        <div>
+        <div class="mb-5 mb-md-0">
           <button class="myButton selectButton">
             <form class="" id="form-tri">
               <select name="tri" class="selectGallery">
