@@ -19,7 +19,7 @@
       <div class="d-md-flex justify-content-between align-items-center">
         <div class="title" id="tri">Tous les projets
         </div>
-        <div class="mb-5 mb-md-0">
+        <div>
           <button class="myButton selectButton">
             <form class="" id="form-tri">
               <select name="tri" class="selectGallery">

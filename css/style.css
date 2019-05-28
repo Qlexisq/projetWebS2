@@ -729,6 +729,12 @@ label:hover{
 		margin-right: 20px;
 	}
 
+	.selectButton{
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom: 30px;
+	}
+
 	/* profile */
 	.profileProjects {
 		margin-left: 20px;
