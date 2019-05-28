@@ -110,10 +110,10 @@ SQL
 if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $pseudo, 'mail' => $mail, 'password' => $passwordBin])){
     session_start();
     session_regenerate_id(true);
-    $_SESSION["user"] = $db->lastInsertId();
+ //   $_SESSION["user"] = $db->lastInsertId();
     $message = array(
         "Message" => "Successfully registered",
-        "Code" => 1
+        "code" => 1
     );
     echo json_encode($message);
     http_response_code(200);
@@ -122,7 +122,7 @@ if($stmt->execute(['firstname' => $firstname, 'lastname' => $name, 'pseudo' => $
 else{
     $message = array(
         "Message" => "Error while registering, please try again",
-        "Code" => 2
+        "code" => 2
     );
     echo json_encode($message);
     exit();

@@ -41,12 +41,13 @@ document.getElementById('button-register').onclick = event => {
                 window.location = "https://imackickstarter.000webhostapp.com/login.php";
                 // window.location =  "http://localhost/projetWebS2/profile.php";
             }
-            if (data.code == 3) {
+            else if (data.code == 3) {
                 alert("Email not valid");
-                window.location = "https://imackickstarter.000webhostapp.com/register.php";
+               // window.location = "https://imackickstarter.000webhostapp.com/register.php";
                 // window.location =  "http://localhost/projetWebS2/profile.php";
-            } else {
-                alert(data.Message);
+            } 
+            else {
+                alert(data.message);
                 window.location = "https://imackickstarter.000webhostapp.com/register.php";
                 // window.location = "http://localhost/projetWebS2/register.php";
             }
